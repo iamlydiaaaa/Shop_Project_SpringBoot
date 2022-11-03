@@ -28,6 +28,7 @@ border: 0;
 font-size: 100%;
 font: inherit;
 vertical-align: baseline;
+box-sizing: border-box;
 font-family: "RIDIBatang","pretendard", sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
@@ -69,7 +70,7 @@ input, textarea{
     outline: 1px solid transparent;
     transition: all 0.5s;
     background-color: #fafafa;
-    box-sizing: border-box;
+    padding: 10px;
 }
 
 input:focus{

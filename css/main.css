@@ -69,31 +69,7 @@
     transform: translate(-50%, -50%);
 }
 
-@keyframes btnMove{
-    0%{left: 60%; top: -3px;}
-    16%{left: 99%; top: -3px;}
-    32%{left: 99%; top: 98%;}
-    68%{left: -3px; top: 98%;}
-    84%{left: -3px; top: -3px;}
-    100%{left: 60%; top: -3px;}
-}
-.btn_default::after{
-    content: ""; display: block;
-    width: 5px;height: 5px;
-    background-color: #d1a361;
-    position: absolute; 
-    left: 60%;top: -3px;
-    
 
-}
-/*==호버이펙트==*/
-.btn_default:hover{
-    text-shadow: 0 0 5px rgba(139, 116, 84, 0.2);
-    letter-spacing: 1px;
-}
-.btn_default:hover::after{
-    animation: btnMove linear 1.5s;
-}
 
 .list_img_wrap:hover .btn_wrap {
     visibility: visible;

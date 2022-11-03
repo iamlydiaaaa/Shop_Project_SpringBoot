@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-
+/* =========== login.jsp 시작 ============ */
 #login{
     max-width: 1000px;
     margin: 50px auto;
@@ -71,8 +71,75 @@
 /*버튼부분*/
 .account_box a{}
 
+/*아이디,비밀번호찾기 wrap*/
 .find_wrap{
     margin-bottom: 60px;
 }
+
+/* =========== login.jsp 끝 ============ */
+
+/* =========== join.jsp 시작 ============ */
+#join{
+    max-width: 1200px;
+}
+#join_form{
+    width: 600px;
+}
+
+.personal_info{}
+.personal_info>p{
+    height: 60px;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.personal_info>p label{
+    display: inline-block;
+    width: 150px;
+}
+.personal_info>p input{
+    display: inline-block;
+    width: calc(100% - 160px);
+    height: 40px;
+}
+
+/*--전화번호--*/
+.personal_info>.tel_wrap input{
+    display: inline-block;
+    width: calc(22%);
+}
+
+/*--유효성 안내문구--*/
+.personal_info>p span{
+    display: block;
+    font-size: 12px;
+    color: #999;
+    position: absolute; bottom: -5px; left: 165px;
+}
+
+/*중복확인*/
+#u_id_check{
+    font-size: 14px;
+    width: 100px;
+    position: absolute; right: -100px;top: 10px;
+}
+
+/*버튼 부분*/
+#login_btn{
+    text-align: center;
+}
+#login_btn button{
+    margin: 0 5px;
+    width: 180px;    
+}
+
+
+
+
+
+
+
+/* =========== join.jsp 끝 ============ */
 
 

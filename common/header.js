@@ -72,11 +72,11 @@ var header = `
                 <nav class="info-menu-wrap">
                     <h2 class="hide">로그인 관련 메뉴</h2>
                     <ul class="info-menu">
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
-                        <li><a href="#">주문조회</a></li>
-                        <li><a href="#">장바구니</a></li>
-                        <li><a href="#">고객센터</a></li>
+                        <li><a href="user/login.html">로그인</a></li>
+            <li><a href="user/join.html">회원가입</a></li>
+            <li><a href="#">주문조회</a></li>
+            <li><a href="#">장바구니</a></li>
+            <li><a href="board/boardList.html">고객센터</a></li>
                     </ul>
                 </nav>
                 <a href="javascript:;" class="btn-sitemap-close closeBtn"><span class="hide">닫기</span></a>
@@ -97,11 +97,11 @@ var header = `
 
     <nav class="gnb-info-wrap">
         <ul class="gnb-info">
-            <li><a href="#">로그인</a></li>
-            <li><a href="#">회원가입</a></li>
+            <li><a href="user/login.html">로그인</a></li>
+            <li><a href="user/join.html">회원가입</a></li>
             <li><a href="#">주문조회</a></li>
             <li><a href="#">장바구니</a></li>
-            <li><a href="#">고객센터</a></li>
+            <li><a href="board/boardList.html">고객센터</a></li>
         </ul>
     </nav>
 

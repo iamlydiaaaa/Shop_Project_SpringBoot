@@ -64,9 +64,35 @@ section{
     position: relative;
     cursor: pointer;
 }
+@keyframes btnMove{
+    0%{left: 60%; top: -3px;}
+    16%{left: 99%; top: -3px;}
+    32%{left: 99%; top: 98%;}
+    68%{left: -3px; top: 98%;}
+    84%{left: -3px; top: -3px;}
+    100%{left: 60%; top: -3px;}
+}
+.btn_default::after{
+    content: ""; display: block;
+    width: 5px;height: 5px;
+    background-color: #d1a361;
+    position: absolute; 
+    left: 60%;top: -3px;
+    
 
+}
+/*==호버이펙트==*/
+.btn_default:hover{
+    text-shadow: 0 0 5px rgba(139, 116, 84, 0.2);
+    letter-spacing: 1px;
+}
+.btn_default:hover::after{
+    animation: btnMove linear 1.5s;
+}
+
+/*두번째 버튼 테마*/
 .btn_2{
-    width: 100%;
+    width: 100%; 
     padding: 15px 0;
     background-color: #c9ab81;
     border: 1px solid #c9ab81;
@@ -79,12 +105,14 @@ section{
     letter-spacing: 3px;
 }
 
+/*세번째 버튼 테마*/
 
 .btn_3{
     width: 100%;
     padding: 15px 0;
     border: 1px solid #c9ab81;
     color: #c9ab81;
+    background-color: #fff;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s;
