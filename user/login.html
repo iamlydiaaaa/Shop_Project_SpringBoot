@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>홈</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <script>
+
+    </script>
+    <style>
+        .sitemap {
+            visibility="hidden";
+            opacity="0";
+        }
+
+    </style>
+</head>
+
+<body>
+    <script src="../common/header.js"></script>
+
+    <main>
+        <div class="sec_tit">
+            <h2>LOGIN</h2>
+        </div>
+        <section id="login">
+            <form action="" method="post" id="login_con">
+                <div id="login1" class="login_box">
+                   <p><label for="u_id">회원 로그인</label></p>
+                    <p class="u_txt">
+                        <input type="text" id="u_id" autocomplete="off" name="id" placeholder="아이디">
+                    </p>
+                    <p class="u_txt">
+                        <input type="password" id="u_pwd" autocomplete="off" name="pwd" placeholder="비밀번호">
+                    </p>
+
+                    <!--    아이디저장    -->
+                    <p id="chk_wrap1">
+                        <input type="checkbox" name="chk1" id="chk1" value="1">
+                        <label for="chk1" class="type01 type02">아이디 저장</label>
+                    </p>
+                    <p id="btn_wrap1">
+                        <input type="submit" id="s_btn1" class="btn_2" value="로그인">
+                    </p><!-- btn_wrap1 -->
+
+                </div><!-- 회원로그인, login1 -->
+                <div class="account_box">
+                    <p class="find_wrap">
+                       <strong>아이디/비밀번호 찾기</strong>
+                       <span>간단한 정보를 입력 후 정보를 찾을 수 있습니다.</span>
+                        <a href="#" class="search1 btn_3">아이디/비밀번호 찾기</a>
+                    </p>
+                    <p class="join_wrap">
+                       <strong>신규 회원가입</strong>
+                       <span>회원가입하여 다양한 혜택과 소식을 만나보세요.</span>
+                        <a href="#" class="join1 btn_3">회원가입</a>
+                    </p>
+                </div>
+            </form><!-- login_con -->
+        </section>
+    </main>
+
+    <script src="../common/footer.js"></script>
+</body>
+
+</html>

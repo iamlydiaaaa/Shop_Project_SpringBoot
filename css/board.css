@@ -1,0 +1,147 @@
+@charset "utf-8";
+main{
+    padding: 130px 0 150px;
+}
+section{
+}
+/* ===================== BoardList 시작 ===================== */
+/* ==== 총xx건 ==== */
+.list_total{
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.list_total p{ display: inline-block;}
+.list_total p:nth-child(1){float: left;}
+.list_total p:nth-child(2){float: right;}
+.list_total .btn_default{
+    width: 120px; height: 30px;
+}
+.list_total strong{color: #c39a4c;}
+
+/* ==== 테이블부분 시작 ==== */
+.list_table{}
+
+.list_table #tbBox{
+    border-top: 2px solid #333;
+    font-size: 16px;
+    text-align: center;
+    color: #555;
+    width: 100%;
+    max-width: 1400px;
+}
+#tbBox tr{
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+}
+
+#tbBox tr:hover{
+    background-color: rgba(227, 219, 202, 0.2);
+}
+#tbBox td{
+    height: 90px;
+    vertical-align: middle;
+}
+
+/*---*/
+#tbNum{}
+#tbTit{
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    text-align: left; color: #333;
+}
+#tbName{
+}
+#tbDate{
+}
+#tbStatus{
+}
+#tbStatus span{
+    background-color: #eaeaea;
+    padding: 10px 25px;
+    border-radius: 40px;
+    font-size: 0.8em;
+    color: #999;
+}
+#tbStatus .comment{
+    background-color: #f2c26a;
+    color: #fff;
+}
+
+
+/*======게시판 번호 넘김 부분======*/
+.list_num{
+    height: 30px;
+    line-height: 30px;
+    margin: 50px 0;
+}
+.list_num ul{
+    text-align: center;
+}
+.list_num li{
+    display: inline-block;
+    height: 30px;
+    color: #777;
+}
+.list_num li a{
+    padding: 0 15px;
+    display: block;
+    
+    border: 1px solid;
+}
+
+.list_num li:hover{
+    color: #c39a4c;
+}
+.list_num .l_prev{color: #c39a4c;}
+.list_num .l_next{color: #c39a4c;}
+
+
+/* ==== 테이블부분 끝 ==== */
+/* ===================== BoardList 끝 ===================== */
+
+/* ===================== BoardRegister 시작 ===================== */
+
+#board_regist{
+    margin-top: 100px;
+    padding: 50px 100px; 
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.board_write{
+    width: 100%;
+    margin-bottom: 50px;
+}
+.row { height: 60px;}
+.row + .row{margin-top: 30px;}
+.board_write p{
+    float: left;  
+}
+
+.board_tit{
+    width: 200px; padding-top: 20px;
+}
+.row p:nth-child(2){
+    width: calc(100% - 200px);
+}
+.board_txt{ height: 250px;}
+
+.board_write #title{ width: 100%;}
+.board_write #content{ width: 100%; height: 250px;}
+.board_write input, .board_write textarea{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.submit_wrap{
+    text-align: center;
+}
+.submit_wrap .btn_default{
+    margin: 0 auto;
+    display: inline-block;
+}
+
+/* ===================== BoardRegister 끝 ===================== */

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>홈</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/board.css">
+    <script>
+
+    </script>
+    <style>
+        .sitemap {
+            visibility="hidden";
+            opacity="0";
+        }
+
+    </style>
+</head>
+
+<body>
+    <script src="../common/header.js"></script>
+
+    <main>
+        <div class="sec_tit">
+            <span>궁금한 내용을 남겨주세요.</span>
+            <h2>Q&amp;A</h2>
+        </div>
+        <section id="board_regist">
+            <form action="/" method="post">
+                <div class="board_write">
+                    <div class="row">
+                        <p class="board_tit"><label for="title">제목</label></p>
+                        <p>
+                            <input type="text" name="title" id="title" placeholder="제목">
+                        </p>
+                    </div>
+                    <div class="row board_txt">
+                        <p class="board_tit"><label for="content">내용</label></p>
+                        <p>
+                            <textarea name="content" id="content" class="txt_area" placeholder="내용을 입력하세요."></textarea>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <p class="board_tit"><label for="file">첨부파일</label></p>
+                        <p>
+                            <input type="file" name="file" id="file">
+                        </p>
+                    </div>
+                </div>
+                <div class="submit_wrap">
+                    <!--                        <input type="hidden" name="page" value="${page}">-->
+                    <button type="submit" class="btn_default">문의 등록하기</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../common/footer.js"></script>
+</body>
+
+</html>

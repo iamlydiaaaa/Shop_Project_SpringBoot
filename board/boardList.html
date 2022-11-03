@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>홈</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/board.css">
+    <script>
+
+    </script>
+    <style>
+        .sitemap {
+            visibility="hidden";
+            opacity="0";
+        }
+
+    </style>
+</head>
+
+<body>
+    <script src="../common/header.js"></script>
+
+    <main>
+        <div class="sec_tit">
+            <span>궁금한 내용을 남겨주세요.</span>
+            <h2>Q&amp;A</h2>
+        </div>
+        <section id="board_list">
+            <div class="list_total">
+                <p>총 <strong>0</strong>건</p>
+                <p><button class="btn_default">글쓰기</button></p>
+            </div>
+            <div class="list_table">
+                <table id="tbBox">
+                   <colgroup>
+                       <col class="col2" width="120px">
+                       <col class="col3" width="*">
+                       <col class="col4" width="140px">
+                       <col class="col5" width="160px">
+                       <col class="col6" width="160px">
+                   </colgroup>
+                   <tbody>
+                        <tr>
+                            <td id="tbNum">1</td>
+                            <td id="tbTit"><a href="#">문의문의문의</a></td>
+                            <td id="tbName">김*경</td>
+                            <td id="tbDate">2022.11.03</td>
+                            <td id="tbStatus"><span class="comment">답변완료</span></td>
+                        </tr>
+                        <tr>
+                            <td id="tbNum">1</td>
+                            <td id="tbTit">제목제목제목제목</td>
+                            <td id="tbName">김*경</td>
+                            <td id="tbDate">2022.11.03</td>
+                            <td id="tbStatus"><span>답변대기</span></td>
+                        </tr>
+                        <tr>
+                            <td id="tbNum">1</td>
+                            <td id="tbTit">제목제목제목제목</td>
+                            <td id="tbName">김*경</td>
+                            <td id="tbDate">2022.11.03</td>
+                            <td id="tbStatus"><span>답변대기</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="list_num">
+                <ul>
+                    <li class="l_prev"><a href="#">Prev</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li class="l_next"><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="../common/footer.js"></script>
+</body>
+
+</html>
