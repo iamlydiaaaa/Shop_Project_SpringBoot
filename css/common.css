@@ -13,6 +13,18 @@ section{
     padding: 30px 0 100px;
 
 }
+
+/* -- 웹접근성  --*/
+.sound_only, .hide{
+    text-indent: -9999px;
+    opacity: 0;
+    width: 0;height: 0;
+}
+.on{
+    visibility: visible;
+}
+
+
 /*----섹션 제목----*/
 
 .sec_tit{
@@ -156,6 +168,7 @@ section{
 #header .logo a {
     display:block;
     width:200px;
+    height: 50px;
     text-indent: -9999px;
     background:url(../img/logo.jpg) no-repeat center;
     background-size: cover;
@@ -181,8 +194,10 @@ section{
 }
 
 .sitemap {
+/*
     visibility: hidden;
     opacity: 0;
+*/
     }
 #header .sitemap::after {
 	opacity:0;
@@ -200,20 +215,20 @@ section{
 }
 #header .sitemap .inner {
 	position:fixed;
-	left:-640px;
+	left:-590px;
 	top:0;
 	z-index:100;
 	padding:50px 50px 126px;
-	width:640px;
+	width:590px;
 	height:100%;
 	background-color:#fff;
     -webkit-transition: left 0.7s cubic-bezier(.64,0,.36,1);
-    transition: left 0.7s cubic-bezier(.64,0,.36,1);
-    background-image: linear-gradient(-45deg, #aaa 0%, #ccc9c3 20%, #f1f1f1 60%, #fafafa 100%);
-
+    transition: all 0.7s cubic-bezier(.64,0,.36,1);
+    background-image: linear-gradient(-45deg, #eaeaea 0%, #eee 20%, #fff 60%, #fff 100%);
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-
+    visibility: hidden;
 }
+/* ======로고 부분====== */
 #header .sitemap-logo {
 	position:absolute;
 	left:50px;
@@ -221,9 +236,10 @@ section{
 }
 #header .sitemap-logo a {
     display:block;
-    width:146px;
-    height:45px;
-    background:url(/img/common/logo.png) no-repeat center;
+    width:250px;
+    height:80px;
+    background:url(../img/logo.jpg) no-repeat center;
+    background-size: cover;
 }
 #header .all-menu-wrap {
 	padding-top:145px;
@@ -249,20 +265,20 @@ section{
 	letter-spacing:-0.7px;
     -webkit-transition:all 0.4s ease;
     transition:all 0.4s ease;
-	font-family:'EB Garamond', 'Noto Serif KR', 'Noto Sans KR', 'Malgun Gothic', dotum, sans-serif;
 }
 #header .all-menu > li.on > a {
 	font-style:italic;
 	color:#c9ab81;
 }
+
+/* ===== 하위메뉴 ===== */
 #header .all-menu .depth {
-	opacity:0;
 	visibility:hidden;
 	position:absolute;
 	right:0;
 	top:30px;
     z-index:100;
-	width:280px;
+	width:230px;
 	-webkit-transition:opacity 0.2s ease, transform 0.4s ease;
 	transition:opacity 0.2s ease, transform 0.4s ease;
 	-webkit-transform:translateX(-10px);
@@ -293,6 +309,8 @@ section{
 	-webkit-transition:width 0.3s ease;
 	transition:width 0.3s ease;	
 }
+
+/* 하위메뉴 호버 효과  */
 #header .all-menu .depth > li > a:hover {
 	color:#c9ab81;
 	font-weight:500;
@@ -302,6 +320,9 @@ section{
 	right:auto;
 	width:100%;
 }
+
+
+/* ===== 하위메뉴 끝 ===== */
 #header .info-menu-wrap {
 	position:absolute;
 	left:0;
@@ -424,8 +445,9 @@ section{
     font-weight:500;
 }
 #header .gnb > li.on > a,
+#header .gnb-info > li > a:hover,
 #header .gnb > li > a:hover {
-    font-weight:500;
+    color: #c9ab81;
 }
 
 
@@ -439,7 +461,8 @@ section{
     top:41px;
     width:20px;
     height:20px;
-    background:url(/img/ico/ico-header-search.png) no-repeat center;
+    background:url(../img/searchBtn.png) no-repeat center;
+    text-indent: -9999px;
 }
 #header .basket-num {
     display:inline-block;
@@ -455,18 +478,21 @@ section{
 #header .all-search-wrap.on {
     z-index:10000;
 }
+
+/* ====== 숨겨지는 검색 wrap ====== */
 #header .all-search {
 	opacity:0;
 	visibility:hidden;
 	position:fixed;
 	left:0;
-	top:0;
+	top:0px;
 	width:100%;
-	height:100%;
-	background:url(/img/common/all-search-bg.jpg) no-repeat center;
+	height:90%;
+	background:url(../img/img03.jpg) no-repeat center;
 	background-size:cover;
 	-webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 #header .all-search-wrap.on .all-search {
 	opacity:1;
@@ -490,23 +516,24 @@ section{
 	max-width:1160px;
 	width:calc(100% - 100px);
 }
+
+/* === 검색 필드 === */
 #header .sch-word-box #sch_str {
-	padding:0;
+	padding:10px 20px;
 	width:100%;
 	height:96px;
-	border-radius:0;
 	border:none;
 	border-bottom:2px solid #c9ab81;
 	background-color:transparent;
-	font-size:45px;
+	font-size:40px;
 	color:#333;
-	font-family:'EB Garamond', 'Noto Serif KR', 'Noto Sans KR', 'Malgun Gothic', dotum, sans-serif;
+    font-family: 'pretendard',sans-serif;
 	font-weight:600;
 	-webkit-appearance:none;
 	appearance:none;
 }
 #header .sch-word-box #sch_str::placeholder {
-	font-family:'EB Garamond', 'Noto Serif KR', 'Noto Sans KR', 'Malgun Gothic', dotum, sans-serif;
+
 	color:#c9ab81 !important;
 	font-weight:600;
 }
@@ -519,7 +546,8 @@ section{
 	width:30px;
 	height:30px;
 	border:none;
-	background:url(/img/ico/ico-header-search-big.png) no-repeat center;
+	background:url(../img/searchBtn.png) no-repeat center;
+    text-indent: -9999px;
 }
 #header .sch-word-wrap {
 	display:flex;
@@ -535,7 +563,6 @@ section{
 	font-size:20px;
 	color:#333333;
 	line-height:30px;
-	font-family:'Noto Serif KR', 'Noto Sans KR', 'EB Garamond', 'Malgun Gothic', dotum, sans-serif;
 }
 #header .sch-recent-word {
 	padding-right:60px;
@@ -574,7 +601,6 @@ section{
 	font-size:16px;
 	color:#888888;
 	line-height:22px;
-	font-family:'EB Garamond', 'Noto Serif KR', 'Noto Sans KR', 'Malgun Gothic', dotum, sans-serif;
 }
 #header .sch-recent-word .recent-delete {
 	position:absolute;
@@ -638,7 +664,7 @@ section{
     top:50px;
     width:30px;
     height:30px;
-    background:url(/img/ico/ico-header-search-close.png) no-repeat center;
+    background:url(../img/closeBtn.png) no-repeat center;
 }
 
 
