@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<div layout:fragment="content">
+  <main id="main">
+    <!--   빅비주얼 시작   -->
+    <section class="visual">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img th:src="@{/img/img02.jpg}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/img04.jpg}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/img05.jpg}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span th class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <!--   빅비주얼 끝   -->
+    <section class="sec1">
+      <div class="sec_tit">
+        <span>가장 인기있는 상품을 소개합니다.</span>
+        <h2>BEST SELLER</h2>
+      </div>
+      <div class="sec_wrap">
+        <ul class="sec1_items_list">
+          <li>
+            <ul>
+              <li class="list_img_wrap">
+                <div class="list_img">
+                  <img th:src="@{/img/list1.jpg}" alt="" />
+                </div>
+                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
+              </li>
+              <li class="list_tit"><a href="#">제목</a></li>
+              <li class="list_desc">상세설명</li>
+              <li class="list_desc_small">색상</li>
+              <li class="list_price"><strong>1000</strong>원</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li class="list_img_wrap">
+                <div class="list_img"></div>
+                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
+              </li>
+              <li class="list_tit"><a href="#">제목</a></li>
+              <li class="list_desc">상세설명</li>
+              <li class="list_desc_small">색상</li>
+              <li class="list_price"><strong>1000</strong>원</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li class="list_img_wrap">
+                <div class="list_img"></div>
+                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
+              </li>
+              <li class="list_tit"><a href="#">제목</a></li>
+              <li class="list_desc">상세설명</li>
+              <li class="list_desc_small">색상</li>
+              <li class="list_price"><strong>1000</strong>원</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li class="list_img_wrap">
+                <div class="list_img"></div>
+                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
+              </li>
+              <li class="list_tit"><a href="#">제목</a></li>
+              <li class="list_desc">상세설명</li>
+              <li class="list_desc_small">색상</li>
+              <li class="list_price"><strong>1000</strong>원</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec4">
+      <div class="sec_wrap">
+        <div class="sec_tit">
+          <span>MD가 선정한 추천 아이템을 만나보세요.</span>
+          <h2>MD PICK</h2>
+        </div>
+        <div class="sec4_contents">
+          <p class="sec4_img" th:style="'background-image:url(' + @{/img/img02.jpg} + ');'"></p>
+          <div class="sec4_txt_wrap1">
+            <ul class="sec4_txt_wrap2">
+              <li class="list_desc">부제목</li>
+              <li class="list_tit"><a href="#">제목제목제목</a></li>
+              <li class="list_desc_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+              <li class="list_btn"><button class="btn_default">VIEW MORE</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <section class="sec2">
+      <div class="sec_tit">
+        <span>새로 나온 상품을 소개합니다.</span>
+        <h2>NEW ITEMS</h2>
+      </div>
+      <div class="sec_wrap">
+        <ul class="sec2_items_list">
+          <li>
+            <div class="list_img_wrap">
+
+              <p class="list_img">
+                <img th:src="@{/img/list1.jpg}" alt="" width="100%" />
+              </p>
+            </div>
+            <ul>
+              <li class="list_desc">상세설명</li>
+              <li class="list_tit"><a href="#">신제품제목</a></li>
+              <li class="list_desc_small">색상</li>
+              <li class="list_btn"><button class="btn_default2">VIEW MORE</button></li>
+            </ul>
+          </li>
+          <li>
+            <div class="list_img_wrap">
+              <p class="list_img" style="background-image: url(img/img02.jpg)"></p>
+            </div>
+            <ul>
+              <li class="list_desc">상세설명</li>
+              <li class="list_tit"><a href="#">신제품제목</a></li>
+              <li class="list_desc_small">색상</li>
+              <li class="list_btn"><button class="btn_default2">VIEW MORE</button></li>
+            </ul>
+          </li>
+          <li>
+            <div class="list_img_wrap">
+              <p class="list_img" style="background-image: url(img/img03.jpg)"></p>
+            </div>
+            <ul>
+              <li class="list_desc">상세설명</li>
+              <li class="list_tit"><a href="#">신제품제목</a></li>
+              <li class="list_desc_small">색상</li>
+              <li class="list_btn"><button class="btn_default2">VIEW MORE</button></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="sec3">
+      <div class="sec_tit">
+        <h2>GALLERY</h2>
+        <span>더욱 다양한 상품을 구경하세요.</span>
+        <div class="list_btn"><button class="btn_default">VIEW MORE</button></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</html>

@@ -1,41 +1,147 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="header">
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+<header th:fragment="header" id="header">
+  <h1 class="logo">
+    <a href="/index.html">HOME</a>
+  </h1>
+  <!--    왼쪽 숨겨진 메뉴 부분 시작   -->
+  <div class="sitemap-wrap">
+    <a href="javascript:;" class="btn-sitemap-open popupClick"><span class="hide">Side Menu</span></a>
+    <div class="sitemap">
+      <div class="inner">
+        <h2 class="sitemap-logo"><a href="./index.html"><span class="hide">Home</span></a></h2>
+        <nav class="all-menu-wrap">
+          <ul class="all-menu">
+            <li>
+              <a href="#">Product</a>
+              <ul class="depth">
+                <li><a href="#" style="color: #f79744">BEST</a></li>
+                <li><a href="#">NEW</a></li>
+                <li><a href="#">TAPE</a></li>
+                <li><a href="#">STICKER</a></li>
+                <li><a href="#">LIVING</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/sub/about.php">A Scoop Of P</a>
+              <ul class="depth">
+                <li><a href="#">Brand Story</a></li>
+                <li><a href="javascript:alert('준비중입니다.');">Gallery</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Community</a>
+              <ul class="depth">
+                <li><a href="#">Noice</a></li>
+                <li><a href="#">Event</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Service</a>
+              <ul class="depth">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Q&amp;A</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <nav class="info-menu-wrap">
+          <h2 class="hide">로그인 관련 메뉴</h2>
+          <ul class="info-menu">
+            <li><a href="./user/login.html">LOGIN</a></li>
+            <li><a href="./user/join.html">JOIN</a></li>
+            <li><a href="#">MY_ORDER</a></li>
+            <li><a href="#">CART</a></li>
+            <li><a href="./board/boardList.html">CS_CENTER</a></li>
+          </ul>
+        </nav>
+        <a href="javascript:;" class="btn-sitemap-close closeBtn"><span class="hide">Close</span></a>
       </div>
     </div>
+  </div> <!--    왼쪽 숨겨진 메뉴 부분 끝  -->
+
+  <!--   ====== 상단 GNB 시작 (왼쪽,오른쪽) ======   -->
+  <nav class="gnb-wrap">
+    <ul class="gnb">
+      <li><a href="#" style="color: #f79744">BEST</a></li>
+      <li><a href="#">NEW</a></li>
+      <li><a href="#">TAPE</a></li>
+      <li><a href="#">STICKER</a></li>
+      <li><a href="#">LIVING</a></li>
+    </ul>
   </nav>
-</div>
+
+  <nav class="gnb-info-wrap">
+    <ul class="gnb-info">
+      <li><a href="./user/login.html">LOGIN</a></li>
+      <li><a href="./user/join.html">JOIN</a></li>
+      <li><a href="#">MY_ORDER</a></li>
+      <li><a href="#">CART</a></li>
+      <li><a href="./board/boardList.html">CS_CENTER</a></li>
+    </ul>
+  </nav>
+  <!--   ====== 상단 GNB 끝 ======    -->
+
+  <!--   ====== 검색 부분 시작 ======    -->
+  <div class="all-search-wrap">
+    <a href="javascript:;" class="btn-all-search-open">Search</a>
+
+    <!--   ====== 숨겨진 검색 팝업창 ======    -->
+    <div class="all-search">
+      <fieldset id="hd_sch">
+        <div class="sch-word-box">
+          <form name="frmsearch1" action="https://bxgs.co.kr/shop/search.php" onsubmit="return search_submit(this);">
+            <label for="sch_str" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+            <input type="text" name="q" value="" id="sch_str" required placeholder="Search..." autocomplete="off">
+            <button type="submit" id="sch_submit" value="검색"><span class="sound_only">Search</span></button>
+          </form>
+        </div>
+        <div class="sch-word-wrap">
+          <div class="sch-recent-word">
+            <h2>Recent Search</h2>
+            <ul>
+              <!-- <li class="sch-word-empty">최근검색어가 없습니다.</li>-->
+              <li>
+                <a href="" class="recent-word">#Masking tape</a>
+                <span class="recent-date">2022.10.14</span>
+                <button type="button" class="recent-delete"><span class="hide">DEL</span></button>
+              </li>
+              <li>
+                <a href="" class="recent-word">#Airpod</a>
+                <span class="recent-date">2022.11.14</span>
+                <button type="button" class="recent-delete"><span class="hide">DEL</span></button>
+              </li>
+            </ul>
+          </div>
+          <div class="sch-popular-word">
+            <h2>Top Searched</h2>
+            <ul>
+              <!-- <li class="sch-word-empty">인기검색어가 없습니다.</li>-->
+              <li><a href="">1. Masking tape</a></li>
+              <li><a href="">2. Sticker</a></li>
+              <li><a href="">3. Keyring</a></li>
+              <li><a href="">4. Airpod case</a></li>
+              <li><a href="">5. Birthday</a></li>
+              <li><a href="">6. Heart</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="javascript:;" class="btn-all-search-close closeBtn"><span class="hide">Close Search</span></a>
+      </fieldset>
+    </div>
+
+    <script>
+            function search_submit(f) {
+                if (f.q.value.length < 2) {
+                    alert("검색어는 두글자 이상 입력하십시오.");
+                    f.q.select();
+                    f.q.focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+  </div>
+</header>
+
 </html>
