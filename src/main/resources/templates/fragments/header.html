@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <header th:fragment="header" id="header">
   <h1 class="logo">
-    <a href="/index.html">HOME</a>
+    <a href="/">HOME</a>
   </h1>
   <!--    왼쪽 숨겨진 메뉴 부분 시작   -->
   <div class="sitemap-wrap">
     <a href="javascript:;" class="btn-sitemap-open popupClick"><span class="hide">Side Menu</span></a>
     <div class="sitemap">
       <div class="inner">
-        <h2 class="sitemap-logo"><a href="./index.html"><span class="hide">Home</span></a></h2>
+        <h2 class="sitemap-logo"><a href="/"><span class="hide">Home</span></a></h2>
         <nav class="all-menu-wrap">
           <ul class="all-menu">
             <li>
@@ -23,7 +24,7 @@
               </ul>
             </li>
             <li>
-              <a href="/sub/about.php">A Scoop Of P</a>
+              <a href="/">A Scoop Of P</a>
               <ul class="depth">
                 <li><a href="#">Brand Story</a></li>
                 <li><a href="javascript:alert('준비중입니다.');">Gallery</a></li>
@@ -48,11 +49,12 @@
         <nav class="info-menu-wrap">
           <h2 class="hide">로그인 관련 메뉴</h2>
           <ul class="info-menu">
-            <li><a href="./user/login.html">LOGIN</a></li>
-            <li><a href="./user/join.html">JOIN</a></li>
-            <li><a href="#">MY_ORDER</a></li>
-            <li><a href="#">CART</a></li>
-            <li><a href="./board/boardList.html">CS_CENTER</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/members/login">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/members/join">JOIN</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
+            <li><a href="/boardList">CS_CENTER</a></li>
           </ul>
         </nav>
         <a href="javascript:;" class="btn-sitemap-close closeBtn"><span class="hide">Close</span></a>
@@ -73,11 +75,12 @@
 
   <nav class="gnb-info-wrap">
     <ul class="gnb-info">
-      <li><a href="./user/login.html">LOGIN</a></li>
-      <li><a href="./user/join.html">JOIN</a></li>
-      <li><a href="#">MY_ORDER</a></li>
-      <li><a href="#">CART</a></li>
-      <li><a href="./board/boardList.html">CS_CENTER</a></li>
+      <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
+      <li sec:authorize="isAuthenticated()"><a href="/members/login">LOGOUT</a></li>
+      <li sec:authorize="isAnonymous()"><a href="/members/join">JOIN</a></li>
+      <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
+      <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
+      <li><a href="/boardList">CS_CENTER</a></li>
     </ul>
   </nav>
   <!--   ====== 상단 GNB 끝 ======    -->
@@ -90,9 +93,9 @@
     <div class="all-search">
       <fieldset id="hd_sch">
         <div class="sch-word-box">
-          <form name="frmsearch1" action="https://bxgs.co.kr/shop/search.php" onsubmit="return search_submit(this);">
+          <form name="frmsearch1" th:action="@{/}" method="get">
             <label for="sch_str" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-            <input type="text" name="q" value="" id="sch_str" required placeholder="Search..." autocomplete="off">
+            <input type="search" name="searchQuery" value="" id="sch_str" required placeholder="Search..." aria-label="Search">
             <button type="submit" id="sch_submit" value="검색"><span class="sound_only">Search</span></button>
           </form>
         </div>

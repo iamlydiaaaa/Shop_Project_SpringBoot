@@ -24,6 +24,12 @@ section{
     visibility: visible;
 }
 
+.error{
+	color: #fff;
+	font-size: 12px;
+	background-color: #c72828;
+	padding: 7px;
+}
 
 /*----섹션 제목----*/
 
@@ -611,7 +617,7 @@ section{
 	width:10px;
 	height:10px;
 	border:none;
-	background:url(/img/ico/ico-recent-word-delete.png) no-repeat center;
+	/*background:url(/img/ico/ico-recent-word-delete.png) no-repeat center;*/
 	font-size:16px;
 	color:#666666;
 	line-height:22px;

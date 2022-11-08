@@ -25,7 +25,7 @@ class MemberServiceTest {
 
     public Member createMember(){
         MemberFormDto memberFormDto = new MemberFormDto();
-        memberFormDto.setEmail("test@email.com");
+        memberFormDto.setEmail("testt@email.com");
         memberFormDto.setName("김시험");
         memberFormDto.setAddress("행복시 행복동");
         memberFormDto.setPassword("1234");
@@ -57,6 +57,6 @@ class MemberServiceTest {
             memberService.saveMember(member2);
         });
 
-        assertEquals("이미 가입된 회원입니다", e.getMessage());
+        assertEquals("이미 가입된 회원입니다.", e.getMessage());
     }
 }
