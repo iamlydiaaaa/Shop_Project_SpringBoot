@@ -2,9 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}" lang="ko">
-<th:block layout:fragment="css">
-    <link th:href="@{/css/user.css}" rel="stylesheet">
-</th:block>
+
 
 <div layout:fragment="content">
     <body>
@@ -15,7 +13,7 @@
         <section id="login">
             <form action="/members/login" method="post" id="login_con">
                 <div id="login1" class="login_box">
-                   <p><label for="email">회원 로그인</label></p>
+                   <p><label th:for="email">회원 로그인</label></p>
                     <p class="u_txt">
                         <input type="email" id="email" name="email" placeholder="이메일">
                     </p>
@@ -44,9 +42,10 @@
                        <strong>신규 회원가입</strong>
                        <span>회원가입하여 다양한 혜택과 소식을 만나보세요.</span>
                         <button type="button" class="join1 btn_3" onClick="location.href='/members/join'">회원가입</button>
-<!--                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
                     </p>
                 </div>
+                <input type="hidden" th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}">
             </form><!-- login_con -->
         </section>
     </main>

@@ -43,7 +43,7 @@ public class Member {
         //비밀번호 암호화
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
-        member.setRole(Role.USER);
+        member.setRole(Role.ADMIN);
 
         return member;
     }

@@ -45,20 +45,26 @@ public class MemberControllerTest {
     @Test
     @DisplayName("로그인 성공 테스트")
     public void loginSuccessTest() throws Exception{
-        String email = "test@test.com";
+        String email = "testtest@test.com";
         String password = "12345678";
-        this.createMember(email, password);
-        mockMvc.perform(formLogin().userParameter("email")
-                .loginProcessingUrl("/members/login")
-                .user(email).password(password))
+        Member member = this.createMember(email,password);
+
+        System.out.println("로그인 성공 테스트 :" + member.toString());
+
+        mockMvc.perform(
+                        formLogin()                                         // form 태그 기반의 로그인 인증 방식 테스트
+                                .loginProcessingUrl("/members/login")       // 요청 url
+                                .userParameter("email")      // 로그인시 파라미터 email로 설정
+                                .user(email).password(password))            // 사용 email, password
                 .andExpect(SecurityMockMvcResultMatchers.authenticated());
+
     }
 
     @Test
     @DisplayName("로그인 실패 테스트")
     public void loginFailTest() throws Exception{
-        String email = "test@test.com";
-        String password = "12345678";
+        String email = "testfail@tests.com";
+        String password = "1234567890";
         this.createMember(email, password);
         mockMvc.perform(formLogin().userParameter("email")
                         .loginProcessingUrl("/members/login")

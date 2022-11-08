@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
 <header th:fragment="header" id="header">
   <h1 class="logo">
     <a href="/">HOME</a>
@@ -50,7 +52,7 @@
           <h2 class="hide">로그인 관련 메뉴</h2>
           <ul class="info-menu">
             <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="/members/login">LOGOUT</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/members/logout">LOGOUT</a></li>
             <li sec:authorize="isAnonymous()"><a href="/members/join">JOIN</a></li>
             <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
             <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
@@ -76,12 +78,13 @@
   <nav class="gnb-info-wrap">
     <ul class="gnb-info">
       <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
-      <li sec:authorize="isAuthenticated()"><a href="/members/login">LOGOUT</a></li>
+      <li sec:authorize="isAuthenticated()"><a href="/members/logout">LOGOUT</a></li>
       <li sec:authorize="isAnonymous()"><a href="/members/join">JOIN</a></li>
       <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
       <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
       <li><a href="/boardList">CS_CENTER</a></li>
     </ul>
+
   </nav>
   <!--   ====== 상단 GNB 끝 ======    -->
 
@@ -143,8 +146,36 @@
                 }
                 return true;
             }
+
+            //관리자 전용 퀵메뉴
+            $(".quick-menu li a").hover(function(){
+              $(this).siblings().css({
+                "opacity": "1",
+                "right": "50px"
+              });
+            },function(){
+              $(this).siblings().css({
+                "opacity": "0",
+                "right": "100px"
+              });
+            })
+
         </script>
   </div>
+
+  <!--  관리자 전용 퀵메뉴  -->
+<!--  <div id="navi" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">-->
+              <div id="navi">
+    <ul class="quick-menu">
+      <li><a href="#">관리자 메뉴</a></li>
+      <li><span>상품 등록</span><a href="/admin/item/new">등록</a></li>
+      <li><span>상품 관리</span><a href="/admin/items">관리</a></li>
+      <li><span>관리자메뉴</span><a href="#">메뉴</a></li>
+      <li><span>기타 메뉴</span><a href="#">기타</a></li>
+    </ul>
+    <a href="#" class="quick-top">TOP</a>
+  </div>
+  <!--  관리자 전용 퀵메뉴 끝  -->
 </header>
 
 </html>
