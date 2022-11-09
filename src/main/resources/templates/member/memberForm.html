@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}" lang="ko">
+      layout:decorate="~{layouts/layout1}">
 
 
 <div layout:fragment="content">
@@ -51,8 +51,7 @@
                 </div>
                 <div id="login_btn">
                     <button type="submit" class="btn_2">회원가입</button>
-                    <input type="hidden" th:name="${_csrf.parameterName}"
-                           th:value="${_csrf.token}">
+<!--                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
                     <button type="reset" class="btn_3">다시작성</button>
                 </div>
             </form>
@@ -64,6 +63,8 @@
             if(errorMessage != null){
                 alert(errorMessage);
             }
+            // let a = [[${_csrf.token}]];
+            // console.log(a);
         });
     </script>
 </div>

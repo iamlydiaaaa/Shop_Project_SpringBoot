@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}" lang="ko">
+      layout:decorate="~{layouts/layout1}">
 
 
 <div layout:fragment="content">
-    <body>
     <main>
         <div class="sec_tit">
             <h2>LOGIN</h2>
@@ -13,11 +12,12 @@
         <section id="login">
             <form action="/members/login" method="post" id="login_con">
                 <div id="login1" class="login_box">
-                   <p><label th:for="email">회원 로그인</label></p>
+                    <p><label th:for="email">회원 로그인</label></p>
                     <p class="u_txt">
                         <input type="email" id="email" name="email" placeholder="이메일">
                     </p>
                     <p class="u_txt">
+                        <label th:for="password">pw</label>
                         <input type="password" id="password" autocomplete="off" name="password" placeholder="비밀번호">
                     </p>
 
@@ -44,8 +44,7 @@
                         <button type="button" class="join1 btn_3" onClick="location.href='/members/join'">회원가입</button>
                     </p>
                 </div>
-                <input type="hidden" th:name="${_csrf.parameterName}"
-                       th:value="${_csrf.token}">
+<!--                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
             </form><!-- login_con -->
         </section>
     </main>
@@ -57,6 +56,5 @@
             }
         });
     </script>
-    </body>
 </div>
 </html>
