@@ -1,16 +1,24 @@
 @charset "utf-8";
 
 main{padding: 0 30px;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 body{
      overflow-x: hidden;
 }
 section{
-    margin: 0 auto 50px;
-    max-width: 1400px;
-    width: calc(100% - 100px);
-    padding: 30px 0 100px;
+    margin: 0 auto 150px;
+    width: 100%;
+}
+.visual{
+	margin: 0 auto;
+}
+
+/*서브페이지 가로 길이 설정*/
+.sub_section{
+	max-width: 1200px;
+	width: 100%;
+	margin: 100px auto 0;
 
 }
 
@@ -35,6 +43,8 @@ section{
 
 .sec_tit{
     text-align: center;
+	padding-top: 50px;
+	margin-bottom: 30px;
 }
 /*부제목*/
 .sec_tit span{
@@ -700,6 +710,7 @@ section{
     background-size: contain
 }
 #footer h1 a{width: 100%; display: block;
+	height: 50px;
     text-indent: -9999px;
 }
 

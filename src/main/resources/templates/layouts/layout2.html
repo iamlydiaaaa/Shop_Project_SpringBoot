@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>A Scoop Of P</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{/css/reset.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <link th:href="@{/css/quickMenu.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.6/swiper-bundle.min.js"></script>
+    <!-- JS, Popper.js, and jQuery -->
+
+
+    <!--    <th:block layout:fragment="script"></th:block>-->
+    <th:block layout:fragment="css">
+        <style>
+
+
+            #fullpage {
+                width: 100%;
+                height: 100%;
+            }
+
+            #menu li {
+                display: inline-block;
+                margin: 10px;
+                color: #000;
+                background: #fff;
+                background: rgba(255, 255, 255, 0.5);
+                -webkit-border-radius: 10px;
+                border-radius: 10px;
+            }
+
+            #menu li.active {
+                background: #666;
+                background: rgba(0, 0, 0, 0.5);
+                color: #fff;
+            }
+
+            #menu li a {
+                text-decoration: none;
+                color: #000;
+            }
+
+            #menu li.active a:hover {
+                color: #000;
+            }
+
+            #menu li:hover {
+                background: rgba(255, 255, 255, 0.8);
+            }
+
+            #menu li a,
+            #menu li.active a {
+                padding: 9px 18px;
+                display: block;
+            }
+
+            #menu li.active a {
+                color: #fff;
+            }
+
+            #menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 40px;
+                z-index: 70;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .section {
+                font-size: 3vw;
+                text-align: center
+            }
+
+            .swiper-container {
+                width: 100%;
+                height: 100%;
+            }
+
+            .swiper-slide {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </th:block>
+
+</head>
+<body>
+
+<div th:replace="fragments/header::header"></div>
+
+<div layout:fragment="content" class="content">
+
+</div>
+
+<div th:replace="fragments/footer::footer"></div>
+<script>
+    window.onload = function () { //window.onload가 없으면 아래 메소드 실행이 안된다.
+
+        // 왼쪽 숨겨진 메뉴 show / hide
+        var menu = document.querySelector(".inner");
+        document.querySelector(".popupClick").addEventListener("click", function () {
+            menu.style.cssText = 'left: 0; visibility: visible;';
+        });
+        document.querySelector(".closeBtn").addEventListener("click", function () {
+            menu.style.cssText = 'left: -700px; visibility: hidden;';
+        });
+
+        // 검색창 show / hide
+        var sch = document.querySelector(".all-search");
+        document.querySelector(".btn-all-search-open").addEventListener("click", function () {
+            sch.style.cssText = ' opacity: 1; top: 100px; visibility:visible; ';
+        });
+        document.querySelector(".btn-all-search-close").addEventListener("click", function () {
+            sch.style.cssText = ' opacity : 0; top: 0px; visibility:hidden; ';
+        });
+
+        //전체메뉴에서 큰 카테고리 마우스오버시 하위메뉴 등장
+        $(".all-menu>li>a").mouseover(function () {
+            $(".depth").css("visibility", "hidden");
+            $(".all-menu>li>a").css("color", "#333");
+            $(this).css("color", "#f79744");
+            $(this).siblings(".depth").css("visibility", "visible");
+        })
+    }
+</script>
+</body>
+</html>

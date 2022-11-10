@@ -16,11 +16,11 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne //일대다 매핑
+    @ManyToOne(fetch = FetchType.LAZY) //일대다 매핑
     @JoinColumn(name="cart_id")
     private Cart cart;
 
-    @ManyToOne //일대다 매핑
+    @ManyToOne(fetch = FetchType.LAZY) //일대다 매핑
     @JoinColumn(name="item_id")
     private Item item;
 

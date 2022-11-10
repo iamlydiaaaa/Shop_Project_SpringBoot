@@ -5,7 +5,7 @@
 
 
 <div layout:fragment="content">
-    <main>
+    <main class="sub_section">
         <div class="sec_tit">
             <h2>LOGIN</h2>
         </div>
@@ -27,31 +27,31 @@
                         <label for="chk1" class="type01 type02">아이디 저장</label>
                     </p>
                     <p id="btn_wrap1">
-                        <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+                        <!--                    <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>-->
                         <input type="submit" id="s_btn1" class="btn_2" value="로그인">
                     </p><!-- btn_wrap1 -->
 
                 </div><!-- 회원로그인, login1 -->
                 <div class="account_box">
                     <p class="find_wrap">
-                       <strong>아이디/비밀번호 찾기</strong>
-                       <span>간단한 정보를 입력 후 정보를 찾을 수 있습니다.</span>
+                        <strong>아이디/비밀번호 찾기</strong>
+                        <span>간단한 정보를 입력 후 정보를 찾을 수 있습니다.</span>
                         <button type="button" class="search1 btn_3" onClick="location.href='#'">아이디/비밀번호 찾기</button>
                     </p>
                     <p class="join_wrap">
-                       <strong>신규 회원가입</strong>
-                       <span>회원가입하여 다양한 혜택과 소식을 만나보세요.</span>
+                        <strong>신규 회원가입</strong>
+                        <span>회원가입하여 다양한 혜택과 소식을 만나보세요.</span>
                         <button type="button" class="join1 btn_3" onClick="location.href='/members/join'">회원가입</button>
                     </p>
                 </div>
-<!--                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             </form><!-- login_con -->
         </section>
     </main>
     <script th:inline="javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             let errorMessage = [[${errorMessage}]];
-            if(errorMessage != null){
+            if (errorMessage != null) {
                 alert(errorMessage);
             }
         });

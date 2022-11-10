@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+
+#item_form_wrap {
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+#item_form_wrap input, #item_form_wrap textarea, #item_form_wrap .custom_select {
+    background-color: #fdfdfd;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+}
+
+#item_form_wrap > li {
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+
+#item_form_wrap > li + li {
+    margin-top: 20px;
+}
+
+#item_form_wrap .custom_select option {
+    width: 100%;
+    height: 30px;
+}
+
+#item_form_wrap > li p {
+    float: left;
+}
+
+#item_form_wrap .item_tit {
+    width: 100px;
+    line-height: 50px;
+}
+
+#item_form_wrap .item_txt {
+    width: calc(100% - 100px);
+}
+
+#item_form_wrap .item_txt > * {
+    width: 100%;
+    height: 50px;
+}
+
+#item_form_wrap .custom_detail {
+    height: 400px;
+}
+
+#item_form_wrap .custom_detail textarea {
+    height: 400px;
+    resize: vertical;
+}
+
+#item_form_wrap .custom_short {
+    display: flex;
+    justify-content: space-between;
+}
+
+#item_form_wrap .custom_short > div {
+    position: relative;
+}
+
+#item_form_wrap .custom_short .item_txt {
+    width: 110px;
+}
+
+#item_form_wrap .form_btn_wrap {
+    margin: 50px auto 0;
+}
+
+#item_form_wrap .form_btn_wrap > p {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px;
+}
+#item_form_wrap .form_btn_wrap button{
+    width: 100%;
+}
+
+/* 파일 선택 */
+#item_form_wrap .custom_files{
+    height: 250px;
+}
+#item_form_wrap .custom_files .item_tit{
+    height: 250px;}
+#item_form_wrap .custom_files .item_files{
+    margin: 5px 0;
+}
+
+/*    에러 메세지    */
+#item_form_wrap .fieldError {
+    position: absolute;
+    left: 0px;
+    top: 35px;
+    font-size: 12px;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: #dd5858;
+    padding: 2px 5px;
+    font-style: italic;
+    opacity: 0.9;
+}

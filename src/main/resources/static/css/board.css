@@ -5,6 +5,10 @@ main{
 section{
 }
 /* ===================== BoardList 시작 ===================== */
+#board_list{
+    max-width: 1400px;
+}
+
 /* ==== 총xx건 ==== */
 .list_total{
     height: 30px;

@@ -20,4 +20,9 @@ public class HomeController {
     public String home(Model model){
         return "index";
     }
+
+    @GetMapping(value = "/home2")
+    public String homeSecond(Model model){
+        return "index2";
+    }
 }

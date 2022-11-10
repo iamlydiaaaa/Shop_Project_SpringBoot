@@ -1,16 +1,125 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}" lang="ko">
+      layout:decorate="~{layouts/layout1}">
 
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            var errorMessage = [[${errorMessage}]];
+            if (errorMessage != null) {
+                alert(errorMessage);
+            }
+
+            bindDomEvent();
+
+        });
+
+        function bindDomEvent() {
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();  //이미지 파일명
+                var fileExt = fileName.substring(fileName.lastIndexOf(".") + 1); // 확장자 추출
+                fileExt = fileExt.toLowerCase(); //소문자 변환
+
+                if (fileExt != "jpg" && fileExt != "jpeg" && fileExt != "gif" && fileExt != "png" && fileExt != "bmp") {
+                    alert("이미지 파일만 등록이 가능합니다.");
+                    return;
+                }
+
+                $(this).siblings(".custom-file-label").html(fileName);
+            });
+        }
+
+    </script>
+
+</th:block>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+
+</th:block>
 
 <div layout:fragment="content">
-  <main>
-    <div class="sec_tit">
-      <h2>상품 등록</h2>
-    </div>
-    <section>
-    </section>
-  </main>
+    <main class="sub_section">
+        <div class="sec_tit">
+            <h2>상품 등록</h2>
+        </div>
+        <section id="itemForm">
+            <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">
+                <input type="hidden" th:field="*{id}">
+                <ul id="item_form_wrap">
+                    <li>
+                        <p class="item_tit">상품명</p>
+                        <p class="item_txt"><input type="text" th:field="*{itemNm}" placeholder="상품명 입력"></p>
+                        <p th:if="${#fields.hasErrors('itemNm')}" th:errors="*{itemNm}" class="fieldError">Incorrect
+                            data</p>
+                    </li>
+                    <li class="custom_short">
+                        <div>
+                            <p class="item_tit">가격</p>
+                            <p class="item_txt"><input type="number" th:field="*{price}" placeholder="가격"></p>
+                            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="fieldError">Incorrect
+                                data</p>
+                        </div>
+                        <div>
+                            <p class="item_tit">재고</p>
+                            <p class="item_txt"><input type="number" th:field="*{stockNumber}" placeholder="재고"></p>
+                            <p th:if="${#fields.hasErrors('stockNumber')}" th:errors="*{stockNumber}"
+                               class="fieldError">Incorrect data</p>
+                        </div>
+                        <div>
+                            <p class="item_tit">판매상태</p>
+                            <p class="item_txt">
+                                <select class="custom_select" th:field="*{itemSellStatus}">
+                                    <option value="SELL">판매중</option>
+                                    <option value="SOLD_OUT">품절</option>
+                                </select>
+                            </p>
 
-</div></html>
+                        </div>
+                    </li>
+                    <li class="custom_detail">
+                        <p class="item_tit">상세 내용</p>
+                        <p class="item_txt"><textarea aria-label="With textarea" th:field="*{itemDetail}"></textarea>
+                        </p>
+                        <p th:if="${#fields.hasErrors('itemDetail')}" th:errors="*{itemDetail}" class="fieldError">
+                            Incorrect data</p>
+                    </li>
+
+                    <li th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}" class="custom_files">
+                        <p class="item_tit">파일 선택</p>
+                        <p class="item_txt">
+                        <p th:each="num: ${#numbers.sequence(1,5)}" class="item_files">
+                            <input type="file" name="itemImgFile">
+                            <label th:text="상품이미지 + ${num}"></label>
+                        </p>
+                        </p>
+                    </li>
+                    <li th:if="${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
+                        <p class="item_tit">파일 선택</p>
+                        <p th:each="itemImgDto, status: ${itemFormDto.itemImgDtoList}" class="item_txt">
+                            <input type="file" class="custom-file-input" name="itemImgFile">
+                            <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">
+                            <label th:text="${not #strings.isEmpty(itemImgDto.oriImgName)} ? ${itemImgDto.oriImgName} : '상품이미지' + ${status.index+1}"></label>
+                        </p>
+                    </li>
+                    <li class="form_btn_wrap">
+                        <p th:if="${#strings.isEmpty(itemFormDto.id)}">
+                            <button th:formaction="@{/admin/item/new}" type="submit" class="btn_2">저장</button>
+                        </p>
+                        <p th:unless="${#strings.isEmpty(itemFormDto.id)}">
+                            <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
+                                    class="btn_2">수정
+                            </button>
+                        </p>
+                    </li>
+                </ul>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            </form>
+        </section>
+    </main>
+</div>
+
+</html>
