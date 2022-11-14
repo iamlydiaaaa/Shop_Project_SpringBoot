@@ -108,3 +108,69 @@
     font-style: italic;
     opacity: 0.9;
 }
+
+
+/*------------------------------------------*/
+/*-----상품 관리 itemMng.html----*/
+#item_manage{}
+#item_manage>form{}
+.item_manage_table{}
+
+
+.item_manage_table{
+    border-top: 2px solid #333;
+    font-size: 16px;
+    text-align: center;
+    color: #555;
+    width: 100%;
+    max-width: 1400px;
+}
+.item_manage_table tr{
+    border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+}
+
+.item_manage_table tr:hover{
+    background-color: rgba(227, 219, 202, 0.2);
+}
+.item_manage_table .table_head{cursor: unset;}
+.item_manage_table .table_head:hover{background-color: #fff;}
+.item_manage_table td{
+    height: 60px;
+    vertical-align: middle;
+}
+
+
+/*--검색부분--*/
+.board_search_wrap{
+    height: 40px;
+    margin: 50px auto;
+    width: 100%;
+    min-width: 1000px;
+}
+.board_search_select{
+    width: 360px; height: 100%;
+    float: left;
+}
+.board_search_select>select{
+    float: left;
+    margin-right: 5px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #555;
+    padding: 0 10px;
+}
+
+.search_area_wrap{
+    width: calc(100% - 370px);
+    float: left;
+}
+.search_area_wrap>*{float: left; height: 40px;}
+.search_area_wrap .btn_2{
+    width: 80px;
+    margin-left: 10px;
+}
+.search_area_wrap input{
+    width: calc(100% - 100px);
+}

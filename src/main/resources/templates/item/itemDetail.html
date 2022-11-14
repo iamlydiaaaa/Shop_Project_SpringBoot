@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+<main id="contents">
+
+
+  <div id="sit_hhtml"></div>
+  <script src="https://bxgs.co.kr/js/shop.js"></script>
+
+
+  <div id="sit">
+
+    <form name="fitem" action="https://bxgs.co.kr/shop/cartupdate.php" method="post" onsubmit="return fitem_submit(this);" style="position:relative; z-index:1;">
+      <input type="hidden" name="it_id[]" value="1652406511">
+      <input type="hidden" name="sw_direct">
+      <input type="hidden" name="url">
+
+      <div id="sit_ov_wrap">
+        <!----- 배경 변경 ----->
+        <div id="sit_bg_preview">
+          <div class="bg-preview" style="background-image:url(/img/sub/item-detail-frame-bg01.jpg)">
+            <div class="hide">배경이미지</div>
+          </div>
+          <div class="bg-thumb-list">
+            <div class="bg-thumb on"><img src="/img/sub/item-detail-frame-bg01.jpg" alt=""></div>
+            <div class="bg-thumb"><img src="/img/sub/item-detail-frame-bg02.jpg" alt=""></div>
+            <div class="bg-thumb"><img src="/img/sub/item-detail-frame-bg03.jpg" alt=""></div>
+            <div class="bg-thumb"><img src="/img/sub/item-detail-frame-bg04.jpg" alt=""></div>
+            <div class="bg-thumb"><img src="/img/sub/item-detail-frame-bg05.jpg" alt=""></div>
+          </div>
+        </div>
+
+        <!----- 상품 구매옵션 선택부분 ----->
+        <div id="sit_frame_opt_wrap">
+          <input type="hidden" id="it_price" value="42400">
+
+          <!----- 액자 미리보기 ----->
+          <div id="sit_frame_img">
+            <!-- 이미지 사이즈 3종류 있습니다.-->
+            <div class="frame-img" style="background-image:url(https://bxgs.co.kr/data/item/1652406511/thum05.png); width: 540px; height: 390px;"><span class="hide">주문액자 미리보기</span></div>
+          </div>
+
+          <!----- 상품 주문옵션 ----->
+          <div id="sit_ov" class="2017_renewal_itemform">
+            <div id="sit_frame_tit">
+              <h2 class="hide">상품간략정보 및 구매기능</h2>
+              <strong id="sit_title">아테제 호수</strong>
+              <p>
+                구스타프 클림트 </p>
+            </div>
+            <div id="sit_frame_opt">
+              <div class="swiper frame-opt-slider">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+
+                    <div class="opt-step05-wrap">
+                      <div class="opt-sm-tit">
+                        그림사이즈 선택
+                        <p><span class="f-color">*</span>캔버스/래핑캔버스는 짧은변 최대 140cm</p>
+                      </div>
+                      <div class="opt-select1">
+                        <label for="opt4"></label>
+                        <select name="opt4" id="opt4" class="deco-select" onchange="price_calculate()">
+                          <option value="">사이즈를 선택하세요.</option>
+                          <option value="0">20.0cm x 35.7cm</option>
+                          <option value="1">25.0cm x 44.6cm</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="opt-step01-wrap">
+                      <div class="opt-sm-tit">미디어 선택</div>
+                      <ul class="opt-gall">
+                        <li>
+                          <label>
+                            <input type="radio" name="opt1" value="1" checked onclick="chg_opt(), price_calculate()">
+                            <div class="opt-thumb"><img src="/img/sub/item-detail-step01-fineart.jpg"></div>
+                            <p>캔버스</p>
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name="opt1" value="2" onclick="chg_opt(), price_calculate()">
+                            <div class="opt-thumb"><img src="/img/sub/item-detail-step01-canvas.jpg"></div>
+                            <p>파인아트</p>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="opt-step03-wrap">
+                      <div class="opt-sm-tit">
+                        마띠에르 리터치 선택
+                        <p><span class="f-color">*</span>그림면 질감 리터칭. 캔버스 전용</p>
+                      </div>
+                      <ul class="opt-normal">
+                        <li>
+                          <input type="radio" id="opt-step03-1" name="opt5" value="1" checked onclick="chg_opt()">
+                          <label for="opt-step03-1">없음</label>
+                        </li>
+                        <li>
+                          <input type="radio" id="opt-step03-2" name="opt5" value="2" onclick="chg_opt()">
+                          <label for="opt-step03-2">선택</label>
+                        </li>
+
+                      </ul>
+                    </div>
+
+                    <div class="opt-step02-wrap">
+                      <div class="opt-sm-tit">
+                        프레임 선택
+                        <p><span class="f-color">*</span>스크롤 사용시 다양한 프레임을 확인하실 수 있습니다.</p>
+                      </div>
+                      <ul class="opt-gall" id="opt2">
+
+                      </ul>
+                    </div>
+
+                    <div class="opt-step04-wrap">
+                      <div class="opt-sm-tit">
+                        매트(여백) 선택
+                        <p><span class="f-color">*</span>선택 가능한 경우에만 표시됩니다.</p>
+                      </div>
+                      <ul class="opt-gall" id="opt3">
+
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+
+    </form>
+
+    <!----- 아티스트 다른 그림 ----->
+    <div id="sit_rel">
+      <h2>아티스트 다른 그림</h2>
+      <div class="grid-list">
+        <div class="sct-slider-wrap">
+        </div>
+      </div>
+    </div>
+
+
+    <!----- 상품하단정보 ----->
+    <div id="sit_ov_bottom">
+      <div class="sanchor-wrap" id="sanchor_pos">
+        <ul class="sanchor">
+          <li><a href="javascript:;" class="sanchor_on">상품정보</a></li>
+          <li><a href="javascript:;">구매정보</a></li>
+          <li><a href="javascript:;">상품후기<span class="item_use_count">(1)</span></a></li>
+          <li><a href="javascript:;">상품문의<span class="item_qa_count">(0)</span></a></li>
+        </ul>
+      </div>
+
+      <!----- 상품정보 ----->
+      <div id="sit_inf" class="sit_con open">
+        <h2 class="hide">상품 정보</h2>
+      </div>
+
+
+      <!----- 구매정보 ----->
+      <div id="sit_buy" class="sit_con">
+        <h2 class="hide">구매정보</h2>
+      </div>
+
+
+      <!----- 사용후기 ----->
+      <div id="sit_use" class="sit_con">
+        <div class="maxinner">
+          <h2 class="hide">사용후기</h2>
+
+          <!----- 전체평점 ----->
+          <div id="itemgrade">
+            <div class="left">
+              <strong class="grade-total">4.8</strong>
+              <p><strong>100%</strong>의 구매자들이 이 상품을 좋아합니다.</p>
+            </div>
+            <div class="right">
+              <ul>
+                <li class="on">
+                  <div class="grade-star"><img src="/shop/img/s_star5_big.png" alt="5점"></div>
+                  <div class="grade-txt">아주 좋아요</div>
+                  <div class="grade-graph">
+                    <div class="grade-bar" style="width:98%;"></div>
+                  </div>
+                  <div class="grade-score">98%</div>
+                </li>
+                <li class="on">
+                  <div class="grade-star"><img src="/shop/img/s_star4_big.png" alt="4점"></div>
+                  <div class="grade-txt">맘에 들어요</div>
+                  <div class="grade-graph">
+                    <div class="grade-bar" style="width:100%;"></div>
+                  </div>
+                  <div class="grade-score">100%</div>
+                </li>
+                <li>
+                  <div class="grade-star"><img src="/shop/img/s_star3_big.png" alt="3점"></div>
+                  <div class="grade-txt">보통이예요</div>
+                  <div class="grade-graph">
+                    <div class="grade-bar" style="width:0%;"></div>
+                  </div>
+                  <div class="grade-score">0%</div>
+                </li>
+                <li>
+                  <div class="grade-star"><img src="/shop/img/s_star2_big.png" alt="2점"></div>
+                  <div class="grade-txt">그냥 그래요</div>
+                  <div class="grade-graph">
+                    <div class="grade-bar" style="width:0%;"></div>
+                  </div>
+                  <div class="grade-score">0%</div>
+                </li>
+                <li>
+                  <div class="grade-star"><img src="/shop/img/s_star1_big.png" alt="1점"></div>
+                  <div class="grade-txt">별로예요</div>
+                  <div class="grade-graph">
+                    <div class="grade-bar" style="width:0%;"></div>
+                  </div>
+                  <div class="grade-score">0%</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!----- 사용후기 게시판 ----->
+          <div id="itemuse">
+
+
+            <div id="sit_use_tit">
+              <h2>Review</h2>
+              <div class="sit_use_order">
+                <ul>
+                  <li class="on"><a href="">최신순</a></li>
+                  <li><a href="">평점높은순</a></li>
+                  <li><a href="">평점낮은순</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="sit_use_list">
+              <ol id="sit_use_ol">
+                <li class="sit_use_li">
+                  <button type="button" class="sit_use_li_title">
+                    선물드리기 딱인 것 같아요 </button>
+                  <dl class="sit_use_dl">
+                    <dt>선호도</dt>
+                    <dd class="sit_use_star">
+                      <img src="https://bxgs.co.kr/shop/img/s_star5.png" alt="별5개">
+                    </dd>
+                    <dt>작성자</dt>
+                    <dd class="sit_use_name">이*</dd>
+                    <dt>작성일</dt>
+                    <dd class="sit_use_time">22-06-02</dd>
+                  </dl>
+
+                  <div id="sit_use_con_0" class="sit_use_con">
+                    <div class="sit_use_p">
+                      <p>배송 포장 모두 만족합니다.</p>
+                      <p>그림 퀄리티는 말할 것도 없고, 색상도 선명하고 무광이라 반사도 적은 것 같아요</p>
+                      <p>선물 이후에 너무 좋아하셔서 보러갔는데 믿고 살만하네요~</p>
+                    </div>
+
+
+                  </div>
+                </li>
+
+              </ol>
+            </div>
+
+            <div id="sit_use_wbtn">
+              <a href="https://bxgs.co.kr/shop/itemuseform.php?it_id=1652406511" class="btnset btn-type01 itemuse_form" onclick="return false;">
+                <svg height="50" width="180">
+                  <rect height="50" width="180"></rect>
+                </svg>
+                <span>사용후기 쓰기</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!----- 상품문의 ----->
+      <div id="sit_qa" class="sit_con">
+        <div class="maxinner">
+          <h2 class="hide">상품문의</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</body>
+
+</html>

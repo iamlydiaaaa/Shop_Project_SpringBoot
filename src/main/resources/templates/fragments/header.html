@@ -2,105 +2,107 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
+<div th:fragment="header">
+    <header id="header">
+        <h1 class="logo">
+            <a href="/">HOME</a>
+        </h1>
+        <!--    왼쪽 숨겨진 메뉴 부분 시작   -->
+        <div class="sitemap-wrap">
+            <a href="javascript:;" class="btn-sitemap-open popupClick"><span class="hide">Side Menu</span></a>
+            <div class="sitemap">
+                <div class="inner">
+                    <h2 class="sitemap-logo"><a href="/"><span class="hide">Home</span></a></h2>
+                    <nav class="all-menu-wrap">
+                        <ul class="all-menu">
+                            <li>
+                                <a href="#">Product</a>
+                                <ul class="depth">
+                                    <li><a href="#" style="color: #f79744">BEST</a></li>
+                                    <li><a href="#">NEW</a></li>
+                                    <li><a href="#">TAPE</a></li>
+                                    <li><a href="#">STICKER</a></li>
+                                    <li><a href="#">LIVING</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/">A Scoop Of P</a>
+                                <ul class="depth">
+                                    <li><a href="#">Brand Story</a></li>
+                                    <li><a href="javascript:alert('준비중입니다.');">Gallery</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Community</a>
+                                <ul class="depth">
+                                    <li><a href="#">Noice</a></li>
+                                    <li><a href="#">Event</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Service</a>
+                                <ul class="depth">
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Q&amp;A</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav class="info-menu-wrap">
+                        <h2 class="hide">로그인 관련 메뉴</h2>
+                        <ul class="info-menu">
+                            <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="/members/logout">LOGOUT</a></li>
+                            <li sec:authorize="isAnonymous()"><a href="/members/new">JOIN</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
+                            <li><a href="/boardList">CS_CENTER</a></li>
+                        </ul>
+                    </nav>
+                    <a href="javascript:;" class="btn-sitemap-close closeBtn"><span class="hide">Close</span></a>
+                </div>
+            </div>
+        </div> <!--    왼쪽 숨겨진 메뉴 부분 끝  -->
 
-<header th:fragment="header" id="header">
-  <h1 class="logo">
-    <a href="/">HOME</a>
-  </h1>
-  <!--    왼쪽 숨겨진 메뉴 부분 시작   -->
-  <div class="sitemap-wrap">
-    <a href="javascript:;" class="btn-sitemap-open popupClick"><span class="hide">Side Menu</span></a>
-    <div class="sitemap">
-      <div class="inner">
-        <h2 class="sitemap-logo"><a href="/"><span class="hide">Home</span></a></h2>
-        <nav class="all-menu-wrap">
-          <ul class="all-menu">
-            <li>
-              <a href="#">Product</a>
-              <ul class="depth">
+        <!--   ====== 상단 GNB 시작 (왼쪽,오른쪽) ======   -->
+        <nav class="gnb-wrap">
+            <ul class="gnb">
                 <li><a href="#" style="color: #f79744">BEST</a></li>
                 <li><a href="#">NEW</a></li>
                 <li><a href="#">TAPE</a></li>
                 <li><a href="#">STICKER</a></li>
                 <li><a href="#">LIVING</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="/">A Scoop Of P</a>
-              <ul class="depth">
-                <li><a href="#">Brand Story</a></li>
-                <li><a href="javascript:alert('준비중입니다.');">Gallery</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Community</a>
-              <ul class="depth">
-                <li><a href="#">Noice</a></li>
-                <li><a href="#">Event</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Service</a>
-              <ul class="depth">
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Q&amp;A</a></li>
-              </ul>
-            </li>
-          </ul>
+            </ul>
         </nav>
-        <nav class="info-menu-wrap">
-          <h2 class="hide">로그인 관련 메뉴</h2>
-          <ul class="info-menu">
-            <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="/members/logout">LOGOUT</a></li>
-            <li sec:authorize="isAnonymous()"><a href="/members/join">JOIN</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
-            <li><a href="/boardList">CS_CENTER</a></li>
-          </ul>
+
+        <nav class="gnb-info-wrap">
+            <ul class="gnb-info">
+                <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/members/logout">LOGOUT</a></li>
+                <li sec:authorize="isAnonymous()"><a href="/members/new">JOIN</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
+                <li><a href="/board/getBoardList">CS_CENTER</a></li>
+            </ul>
+
         </nav>
-        <a href="javascript:;" class="btn-sitemap-close closeBtn"><span class="hide">Close</span></a>
-      </div>
-    </div>
-  </div> <!--    왼쪽 숨겨진 메뉴 부분 끝  -->
+        <!--   ====== 상단 GNB 끝 ======    -->
 
-  <!--   ====== 상단 GNB 시작 (왼쪽,오른쪽) ======   -->
-  <nav class="gnb-wrap">
-    <ul class="gnb">
-      <li><a href="#" style="color: #f79744">BEST</a></li>
-      <li><a href="#">NEW</a></li>
-      <li><a href="#">TAPE</a></li>
-      <li><a href="#">STICKER</a></li>
-      <li><a href="#">LIVING</a></li>
-    </ul>
-  </nav>
 
-  <nav class="gnb-info-wrap">
-    <ul class="gnb-info">
-      <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
-      <li sec:authorize="isAuthenticated()"><a href="/members/logout">LOGOUT</a></li>
-      <li sec:authorize="isAnonymous()"><a href="/members/join">JOIN</a></li>
-      <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
-      <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
-      <li><a href="/boardList">CS_CENTER</a></li>
-    </ul>
-
-  </nav>
-  <!--   ====== 상단 GNB 끝 ======    -->
-
-  <!--  관리자 전용 퀵메뉴  -->
-<!--  <div id="navi" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">-->
-              <div id="navi">
-    <ul class="quick-menu">
-      <li><a href="#">관리자 메뉴</a></li>
-      <li><span>상품 등록</span><a href="/admin/item/new">등록</a></li>
-      <li><span>상품 관리</span><a href="/admin/items">관리</a></li>
-      <li><span>관리자메뉴</span><a href="#">메뉴</a></li>
-      <li><span>기타 메뉴</span><a href="#">기타</a></li>
-    </ul>
-    <a href="#" class="quick-top">TOP</a>
-  </div>
-  <!--  관리자 전용 퀵메뉴 끝  -->
-</header>
+        <!--  관리자 전용 퀵메뉴  -->
+          <div id="navi" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+<!--        <div id="navi">-->
+            <ul class="quick-menu">
+                <li><a href="#">관리자 메뉴</a></li>
+                <li><span>상품 등록</span><a href="/admin/item/new">등록</a></li>
+                <li><span>상품 관리</span><a href="/admin/items">관리</a></li>
+                <li><span>관리자메뉴</span><a href="#">메뉴</a></li>
+                <li><span>기타 메뉴</span><a href="#">기타</a></li>
+            </ul>
+            <a href="#" class="quick-top">TOP</a>
+        </div>
+        <!--  관리자 전용 퀵메뉴 끝  -->
+    </header>
+</div>
 
 </html>

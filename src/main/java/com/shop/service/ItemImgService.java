@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
-
 import javax.persistence.EntityNotFoundException;
 
 @Service
@@ -41,8 +40,8 @@ public class ItemImgService {
     }
 
     public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception{
-        if(!itemImgFile.isEmpty()){ //이미지가 이미 있을 경우 (수정할 경우)
-            ItemImg savedItemImg = itemImgRepository.findById(itemImgId) //상품이미지ID로 기존 저장했던 이미지 entity 조회
+        if(!itemImgFile.isEmpty()){
+            ItemImg savedItemImg = itemImgRepository.findById(itemImgId)
                     .orElseThrow(EntityNotFoundException::new);
 
             //기존 이미지 파일 삭제

@@ -124,17 +124,20 @@ section{
 .board_write p{
     float: left;  
 }
-
-.board_tit{
-    width: 200px; padding-top: 20px;
+.board_write>div>p:nth-child(1){
+    width: 150px;
+    padding-top: 20px;
 }
-.row p:nth-child(2){
-    width: calc(100% - 200px);
+
+.board_write>div>p:nth-child(2){
+    width: calc(100% - 150px);
+}
+.board_write>div>p:nth-child(2)>*{
+     width: 100%;
 }
 .board_txt{ height: 250px;}
 
-.board_write #title{ width: 100%;}
-.board_write #content{ width: 100%; height: 250px;}
+.board_write #content{ height: 250px;}
 .board_write input, .board_write textarea{
     padding: 20px;
     box-sizing: border-box;

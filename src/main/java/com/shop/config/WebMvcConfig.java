@@ -8,8 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    //업로드한 파일을 읽어온다.
-
     @Value("${uploadPath}")
     String uploadPath;
 

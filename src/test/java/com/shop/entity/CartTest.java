@@ -3,7 +3,6 @@ package com.shop.entity;
 import com.shop.dto.MemberFormDto;
 import com.shop.repository.CartRepository;
 import com.shop.repository.MemberRepository;
-import com.shop.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +19,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations = "classpath:application-test.properties")
-public class CartTest {
+@TestPropertySource(locations="classpath:application-test.properties")
+
+class CartTest {
+
+    @Autowired
+    CartRepository cartRepository;
+
     @Autowired
     MemberRepository memberRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
-
-    @Autowired
-    CartRepository cartRepository;
 
     @PersistenceContext
     EntityManager em;
@@ -38,9 +39,8 @@ public class CartTest {
         MemberFormDto memberFormDto = new MemberFormDto();
         memberFormDto.setEmail("test@email.com");
         memberFormDto.setName("홍길동");
-        memberFormDto.setAddress("행복시 마포구 행복동");
-        memberFormDto.setPassword("12345678");
-
+        memberFormDto.setAddress("서울시 마포구 합정동");
+        memberFormDto.setPassword("1234");
         return Member.createMember(memberFormDto, passwordEncoder);
     }
 
@@ -49,7 +49,6 @@ public class CartTest {
     public void findCartAndMemberTest(){
         Member member = createMember();
         memberRepository.save(member);
-
         Cart cart = new Cart();
         cart.setMember(member);
         cartRepository.save(cart);
@@ -61,4 +60,5 @@ public class CartTest {
                 .orElseThrow(EntityNotFoundException::new);
         assertEquals(savedCart.getMember().getId(), member.getId());
     }
+
 }

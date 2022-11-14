@@ -14,8 +14,6 @@ import javax.persistence.MappedSuperclass;
 @Getter
 public abstract class BaseEntity extends BaseTimeEntity{
 
-    //등록일,수정일,등록자,수정자를 모두 가짐 (BaseTimeEntity 상속)
-
     @CreatedBy
     @Column(updatable = false)
     private String createdBy;

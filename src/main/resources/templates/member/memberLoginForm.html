@@ -3,58 +3,56 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .error {
+            color: #bd2130;
+        }
+    </style>
+</th:block>
 
 <div layout:fragment="content">
-    <main class="sub_section">
+
+    <main>
         <div class="sec_tit">
             <h2>LOGIN</h2>
         </div>
         <section id="login">
             <form action="/members/login" method="post" id="login_con">
                 <div id="login1" class="login_box">
-                    <p><label th:for="email">회원 로그인</label></p>
-                    <p class="u_txt">
-                        <input type="email" id="email" name="email" placeholder="이메일">
+                    <p>
+                        <label th:for="email">회원 로그인</label>
                     </p>
                     <p class="u_txt">
-                        <label th:for="password">pw</label>
-                        <input type="password" id="password" autocomplete="off" name="password" placeholder="비밀번호">
+                        <input type="email" name="email" placeholder="email">
                     </p>
-
-                    <!--    아이디저장    -->
+                    <p class="u_txt">
+                        <label th:for="password"></label>
+                        <input type="password" name="password" id="password" placeholder="password">
+                    </p>
                     <p id="chk_wrap1">
-                        <input type="checkbox" name="chk1" id="chk1" value="1">
-                        <label for="chk1" class="type01 type02">아이디 저장</label>
+                        <strong th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></strong>
+                        <button id="s_btn1" class="btn_2">로그인</button>
                     </p>
-                    <p id="btn_wrap1">
-                        <!--                    <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>-->
-                        <input type="submit" id="s_btn1" class="btn_2" value="로그인">
-                    </p><!-- btn_wrap1 -->
-
-                </div><!-- 회원로그인, login1 -->
+                </div>
                 <div class="account_box">
                     <p class="find_wrap">
-                        <strong>아이디/비밀번호 찾기</strong>
-                        <span>간단한 정보를 입력 후 정보를 찾을 수 있습니다.</span>
-                        <button type="button" class="search1 btn_3" onClick="location.href='#'">아이디/비밀번호 찾기</button>
+                        <strong>FIND ID or PW</strong>
+                        <span>Forgotton your account?</span>
+                        <button type="button" class="search1 btn_3">아이디/비밀번호 찾기</button>
                     </p>
                     <p class="join_wrap">
-                        <strong>신규 회원가입</strong>
-                        <span>회원가입하여 다양한 혜택과 소식을 만나보세요.</span>
-                        <button type="button" class="join1 btn_3" onClick="location.href='/members/join'">회원가입</button>
+                        <strong>NEW Account</strong>
+                        <span>Create a new account</span>
+                        <button type="button" class="join1 btn_3" onClick="location.href='/members/new'">회원가입</button>
                     </p>
                 </div>
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-            </form><!-- login_con -->
+            </form>
         </section>
     </main>
-    <script th:inline="javascript">
-        $(document).ready(function () {
-            let errorMessage = [[${errorMessage}]];
-            if (errorMessage != null) {
-                alert(errorMessage);
-            }
-        });
-    </script>
+
 </div>
+
 </html>

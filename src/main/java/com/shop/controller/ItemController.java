@@ -1,25 +1,28 @@
 package com.shop.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.ui.Model;
 import com.shop.dto.ItemFormDto;
-import com.shop.dto.ItemSearchDto;
-import com.shop.entity.Item;
+
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import javax.persistence.EntityNotFoundException;
+
+import com.shop.dto.ItemSearchDto;
+import com.shop.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -71,6 +74,7 @@ public class ItemController {
 
         return "item/itemForm";
     }
+
     @PostMapping(value = "/admin/item/{itemId}")
     public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                              @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model){
@@ -93,7 +97,7 @@ public class ItemController {
         return "redirect:/";
     }
 
-   @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
@@ -112,4 +116,5 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }
+
 }

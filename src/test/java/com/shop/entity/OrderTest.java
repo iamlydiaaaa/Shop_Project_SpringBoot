@@ -2,10 +2,7 @@ package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
 import com.shop.repository.ItemRepository;
-import com.shop.repository.MemberRepository;
-import com.shop.repository.OrderItemRepository;
 import com.shop.repository.OrderRepository;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +16,12 @@ import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.shop.repository.MemberRepository;
+import com.shop.repository.OrderItemRepository;
 
 @SpringBootTest
+@TestPropertySource(locations="classpath:application-test.properties")
 @Transactional
-@TestPropertySource(locations = "classpath:application-test.properties")
 class OrderTest {
 
     @Autowired
@@ -31,16 +30,16 @@ class OrderTest {
     @Autowired
     ItemRepository itemRepository;
 
+    @PersistenceContext
+    EntityManager em;
+
     @Autowired
     MemberRepository memberRepository;
 
     @Autowired
     OrderItemRepository orderItemRepository;
 
-    @PersistenceContext
-    EntityManager em;
-
-    public Item createItem() {
+    public Item createItem(){
         Item item = new Item();
         item.setItemNm("테스트 상품");
         item.setPrice(10000);
@@ -48,6 +47,7 @@ class OrderTest {
         item.setItemSellStatus(ItemSellStatus.SELL);
         item.setStockNumber(100);
         item.setRegTime(LocalDateTime.now());
+
         item.setUpdateTime(LocalDateTime.now());
         return item;
     }
@@ -55,9 +55,10 @@ class OrderTest {
     @Test
     @DisplayName("영속성 전이 테스트")
     public void cascadeTest() {
+
         Order order = new Order();
 
-        for (int i = 0; i < 3; i++) {
+        for(int i=0;i<3;i++){
             Item item = this.createItem();
             itemRepository.save(item);
             OrderItem orderItem = new OrderItem();
@@ -76,10 +77,9 @@ class OrderTest {
         assertEquals(3, savedOrder.getOrderItems().size());
     }
 
-    public Order createOrder() {
+    public Order createOrder(){
         Order order = new Order();
-
-        for (int i = 0; i < 3; i++) {
+        for(int i=0;i<3;i++){
             Item item = createItem();
             itemRepository.save(item);
             OrderItem orderItem = new OrderItem();
@@ -89,11 +89,8 @@ class OrderTest {
             orderItem.setOrder(order);
             order.getOrderItems().add(orderItem);
         }
-
         Member member = new Member();
-
         memberRepository.save(member);
-
         order.setMember(member);
         orderRepository.save(order);
         return order;
@@ -101,7 +98,7 @@ class OrderTest {
 
     @Test
     @DisplayName("고아객체 제거 테스트")
-    public void orphanRemovalTest() {
+    public void orphanRemovalTest(){
         Order order = this.createOrder();
         order.getOrderItems().remove(0);
         em.flush();
@@ -121,5 +118,5 @@ class OrderTest {
         orderItem.getOrder().getOrderDate();
         System.out.println("===========================");
     }
-}
 
+}

@@ -15,10 +15,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(locations = "classpath:application-test.properties")
-public class ItemControllerTest {
+@TestPropertySource(locations="classpath:application-test.properties")
+class ItemControllerTest {
+
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Test
     @DisplayName("상품 등록 페이지 권한 테스트")

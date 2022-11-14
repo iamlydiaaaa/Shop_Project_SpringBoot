@@ -3,17 +3,16 @@ package com.shop.entity;
 import com.shop.constant.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="orders")
-@Getter
-@Setter
-public class Order {
+@Table(name = "orders")
+@Getter @Setter
+public class Order extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "order_id")
@@ -50,19 +49,19 @@ public class Order {
         return order;
     }
 
-//    public int getTotalPrice() {
-//        int totalPrice = 0;
-//        for(OrderItem orderItem : orderItems){
-//            totalPrice += orderItem.getTotalPrice();
-//        }
-//        return totalPrice;
-//    }
-//
-//    public void cancelOrder() {
-//        this.orderStatus = OrderStatus.CANCEL;
-//        for (OrderItem orderItem : orderItems) {
-//            orderItem.cancel();
-//        }
-//    }
-    
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for(OrderItem orderItem : orderItems){
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
+
+    public void cancelOrder() {
+        this.orderStatus = OrderStatus.CANCEL;
+        for (OrderItem orderItem : orderItems) {
+            orderItem.cancel();
+        }
+    }
+
 }
