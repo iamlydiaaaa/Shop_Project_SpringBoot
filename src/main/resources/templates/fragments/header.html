@@ -80,8 +80,8 @@
                 <li sec:authorize="isAnonymous()"><a href="/members/login">LOGIN</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/members/logout">LOGOUT</a></li>
                 <li sec:authorize="isAnonymous()"><a href="/members/new">JOIN</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/orders">MY_ORDER</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/cart">CART</a></li>
                 <li><a href="/board/getBoardList">CS_CENTER</a></li>
             </ul>
 

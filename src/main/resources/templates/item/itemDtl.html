@@ -113,68 +113,171 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
     <style>
+        .item_section{
+            width: 100%;
+            margin: 100px auto 0;
+        }
+        /*  상세 정보 상단 부분  */
+        .detail_top{
+
+            padding: 80px 0;
+            width: 100%;
+            height: 600px;
+            margin-bottom: 50px;
+            display: flex;
+
+            background-color: #efefef;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-attachment: fixed;
+        }
+        /*  왼쪽 사진부분  */
+        .detail_left_wrap {
+            width: 40%; min-width: 500px;  margin: 0 5%;text-align: center;
+        }
+        .detail_left_wrap img{
+            height: 440px;}
+
+        /*  오른쪽 텍스트부분  */
+        .detail_right_wrap{
+            width: 500px;
+            padding: 40px;
+            background-color: #fff;
+            position: relative;
+            margin: 0 5%;
+        }
+        .item_dt_tit{font-size: 26px; font-weight: bold; padding-bottom: 20px;
+        }
+
+        .item_dt_price{
+            text-align: right;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .item_dt_count{height: 90px; line-height: 30px; padding: 30px;
+            background-color: #fafafa; margin-bottom: 20px;}
+        .item_dt_count strong{float: left;}
+        .item_dt_count input{float: right; height: 30px; text-align: center; background: #fff;
+            width: 100px;}
+
+        .item_dt_total{height: 90px; line-height: 30px; padding: 30px 0;
+            border-top: 1px solid #333;}
+        .item_dt_total strong{float: left;}
+        .item_dt_total span{float: right; font-weight: bold; font-size: 1.6em; color: #88704f;}
+        .item_dt_btns{display: flex; align-items: center;}
+        .item_dt_btns button:nth-child(1){
+            margin-right: 10px;
+        }
+
+        .item_dt_status .st_sell{font-size: 12px; color: #fff; background-color: #c9ab81;
+            padding: 3px 9px; border-radius: 7px;
+        }
+        .item_dt_status .st_out{font-size: 12px; color: #fff; background-color: #b4b4b4;
+            padding: 3px 9px; border-radius: 7px;
+        }
+
+        /*  상단부분 끝  */
+
+        /*  하단부분 시작  */
+        /*  하단 버튼 gnb부분  */
+        .detail_gnb ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            max-width: 1400px;
+            width: 100%;
+            text-align: center;
+        }
+        .detail_gnb li{
+            flex: 1;
+            color: #666666;
+            border-bottom: 1px solid #cecece;
+            transition: all 0.2s;
+        }
+        .detail_gnb li:hover{
+            color: #c9ab81;
+        }
+        .detail_gnb .detail_gnb_on{
+            border-bottom: 1px solid #c9ab81;
+            color: #c9ab81;
+        }
+        .detail_gnb a{
+            display: block;
+            font-size: 20px;
+            line-height: 65px;
+        }
+
+        .detail_desc{
+            padding: 50px 0;
+            text-align: center;
+            line-height: 1.5em;
+        }
+
+        .detail_imgs img{
+            width: 80%;
+            margin: 30px auto;
+        }
 
     </style>
 </th:block>
 
-<div layout:fragment="content" style="margin-left:25%;margin-right:25%">
-
-    <input type="hidden" id="itemId" th:value="${item.id}">
-
-    <div class="d-flex">
-        <div class="repImgDiv">
-            <img th:src="${item.itemImgDtoList[0].imgUrl}" class = "rounded repImg" th:alt="${item.itemNm}">
-        </div>
-        <div class="wd50">
-            <span th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="badge badge-primary mgb-15">
-                판매중
-            </span>
-            <span th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="badge btn-danger mgb-15" >
-                품절
-            </span>
-            <div class="h4" th:text="${item.itemNm}"></div>
-            <hr class="my-4">
-
-            <div class="text-right">
-                <div class="h4 text-danger text-left">
-                    <input type="hidden" th:value="${item.price}" id="price" name="price">
-                    <span th:text="${item.price}"></span>원
+<div layout:fragment="content">
+    <main class="item_section">
+        <input type="hidden" id="itemId" th:value="${item.id}">
+        <div class="detail_wrap">
+            <!--     상단 상품 요약 정보      -->
+            <div class="detail_top" th:style="'background-image:url(' + @{/img/img04.jpg} + ');'">
+                <div class="detail_left_wrap">
+                    <img th:src="${item.itemImgDtoList[0].imgUrl}" th:alt="${item.itemNm}">
                 </div>
-                <div class="input-group w-50">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">수량</span>
+                <div class="detail_right_wrap">
+                    <div class="item_dt_tit" th:text="${item.itemNm}"></div>
+                    <div class="item_dt_status">
+                        <span th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="st_sell">판매중</span>
+                        <span th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="st_out">품절</span>
                     </div>
-                    <input type="number" name="count" id="count" class="form-control" value="1" min="1">
+                    <div class="item_dt_price">
+                        <input type="hidden" th:value="${item.price}" id="price" name="price">
+                        <span th:text="${item.price}"></span>
+                        원</div>
+                    <div class="item_dt_count">
+                        <strong>수량</strong>
+                        <input type="number" name="count" id="count" value="1" min="1">
+                    </div>
+                    <div class="item_dt_total">
+                        <strong>총 금액</strong>
+                        <span name="totalPrice" id="totalPrice">원</span>
+                    </div>
+                    <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="item_dt_btns">
+                        <button type="button" onclick="addCart()" class="btn_3">장바구니</button>
+                        <button type="button" onclick="order()" class="btn_2">구매하기</button>
+                    </div>
+                    <div th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="item_dt_btns">
+                        <button type="button" class="btn_3">품절</button>
+                    </div>
+                </div>
+            </div><!--     상단 상품 요약 정보 끝     -->
+            <div class="detail_bottom">
+                <div class="detail_gnb">
+                    <ul>
+                        <li><a href="javascript:;" class="detail_gnb_on">상품정보</a></li>
+                        <li><a href="javascript:;">구매정보</a></li>
+                        <li><a href="javascript:;">상품후기<span class="item_use_count">(1)</span></a></li>
+                        <li><a href="javascript:;">상품문의<span class="item_qa_count">(0)</span></a></li>
+                    </ul>
+                </div>
+                <div class="detail_desc">
+                    <p th:text="${item.itemDetail}"></p>
+                    <div th:each="itemImg : ${item.itemImgDtoList}" class="detail_imgs">
+                        <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}">
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-
-            <div class="text-right mgt-50">
-                <h5>결제 금액</h5>
-                <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
-            </div>
-            <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
-                <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">장바구니 담기</button>
-                <button type="button" class="btn btn-primary btn-lg" onclick="order()">주문하기</button>
-            </div>
-            <div th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
-                <button type="button" class="btn btn-danger btn-lg">품절</button>
-            </div>
         </div>
-    </div>
-
-    <div class="jumbotron jumbotron-fluid mgt-30">
-        <div class="container">
-            <h4 class="display-5">상품 상세 설명</h4>
-            <hr class="my-4">
-            <p class="lead" th:text="${item.itemDetail}"></p>
-        </div>
-    </div>
-
-    <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
-        <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
-    </div>
-
+    </main>
 </div>
 
 </html>
