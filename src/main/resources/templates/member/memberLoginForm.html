@@ -19,7 +19,7 @@
             <h2>LOGIN</h2>
         </div>
         <section id="login">
-            <form action="/members/login" method="post" id="login_con">
+            <form th:action="@{/members/login}" method="post" id="login_con">
                 <div id="login1" class="login_box">
                     <p>
                         <label th:for="email">회원 로그인</label>

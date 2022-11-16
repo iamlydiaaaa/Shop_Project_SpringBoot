@@ -32,7 +32,7 @@
             <h2>회원 가입</h2>
         </div>
         <section id="join">
-                <form action="/members/new" role="form" method="post"  th:object="${memberFormDto}">
+                <form th:action="@{/members/new}" role="form" method="post"  th:object="${memberFormDto}">
                 <div class="personal_info">
 
                     <p>

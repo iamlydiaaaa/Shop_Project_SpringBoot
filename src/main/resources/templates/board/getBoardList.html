@@ -36,6 +36,13 @@
                        <col class="col6" width="160px">
                    </colgroup>
                    <tbody>
+                       <tr>
+                           <th><span>번호</span></th>
+                           <th><span>제목</span></th>
+                           <th><span>작성자</span></th>
+                           <th><span>날짜</span></th>
+                           <th><span>상태</span></th>
+                       </tr>
                         <tr th:each="board, state : ${boardList }">
                         	<td id="tbNum"><span th:text="${state.count }"></span></td>
                             <td id="tbTit"><a th:href="@{/board/getBoard(seq=${board.seq })}" th:text="${board.title }"></a></td>
@@ -43,6 +50,9 @@
                             <td id="tbDate"><span th:text="${board.createDate }"></span></td>
                             <td id="tbStatus"><span class="comment">답변완료</span></td>
                         </tr>
+                       <tr class="board_none">
+                           <td colspan="5"><span>작성된 게시글이 없습니다.</span></td>
+                       </tr>
                     </tbody>
                 </table>
             </div>

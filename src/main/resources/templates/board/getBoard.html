@@ -16,13 +16,13 @@
 </th:block>
 
 <div layout:fragment="content">
-<main class="board_view">
+<main class="sub_section">
         <div class="sec_tit">
             <span>궁금한 내용을 남겨주세요.</span>
             <h2>Q&amp;A</h2>
         </div>
         <section id="board_regist">
-            <form action="/board/updateBoard" method="post">
+            <form th:action="@{/board/updateBoard}" method="post">
             <input name="seq" type="hidden" th:vale="${board.seq}">
                 <div class="board_write">
                     <div class="row">

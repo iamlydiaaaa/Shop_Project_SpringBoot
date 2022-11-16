@@ -55,9 +55,9 @@
                                 <div class="list_img">
                                     <img th:src="@{/img/list1.jpg}" alt="" />
                                 </div>
-                                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
+                                <div class="btn_wrap"><a th:href="@{/item/2}" class="btn_default">VIEW MORE</a></div>
                             </li>
-                            <li class="list_tit"><a href="#">제목</a></li>
+                            <li class="list_tit"><a th:href="@{/item/2}">제목</a></li>
                             <li class="list_desc">상세설명</li>
                             <li class="list_desc_small">색상</li>
                             <li class="list_price"><strong>1000</strong>원</li>

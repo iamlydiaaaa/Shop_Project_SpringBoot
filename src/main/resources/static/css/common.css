@@ -2,6 +2,8 @@
 
 main{padding: 0 30px;
     margin-top: 100px;
+    width: 100%;
+    min-width: 1220px;
 }
 body{
      overflow-x: hidden;
@@ -12,12 +14,14 @@ section{
 }
 .visual{
 	margin: 0 auto;
+    height: 700px;
+    overflow: hidden;
 }
 
 /*서브페이지 가로 길이 설정*/
 .sub_section{
-	max-width: 1200px;
-	width: 100%;
+	width: 1200px;
+
 	margin: 100px auto 0;
 
 }
@@ -86,6 +90,9 @@ section{
 .btn_default{
     border: 1px solid #c9ab81;
     width: 160px;height: 45px;
+	/*line-height: 45px;*/
+	text-align: center;
+	display: inline-block;
     background-color: transparent;
     color: #88704f;
     transition: all 0.3s;
@@ -113,14 +120,74 @@ section{
 .btn_default:hover{
     text-shadow: 0 0 5px rgba(139, 116, 84, 0.2);
     letter-spacing: 1px;
+	color: inherit;
 }
 .btn_default:hover::after{
     animation: btnMove linear 1.5s;
 }
+/*======숫자 증감 버튼======*/
+.select_number_val{
+	/*height: 38px; */
+	border-radius: 5px; overflow: hidden; }
+.select_number_val>*{ width: 40px; height: 38px;
+	text-align: center;
+}
+.select_number_val input:nth-of-type(odd){
+	color: #aaa; background-color: #fff; font-weight: bold; font-size: 18px; cursor: pointer;
+}
+.select_number_val input:nth-of-type(odd):hover{
+	color: #333;
+}
+.select_number_val .count_value{
+	width: 40px;
+	padding-right: 0;
+	background-color: #fff;
+	border: 2px solid #eaeaea;
+	border-radius: 5px;
+}
+
+/*======숫자 증감 버튼 끝======*/
+
+
+
+/*======게시판 번호 넘김 부분======*/
+.list_num{
+	height: 30px;
+	line-height: 30px;
+	margin: 50px 0;
+}
+.list_num ul{
+	text-align: center;
+}
+.list_num li{
+	display: inline-block;
+	height: 30px;
+	color: #777;
+	margin: 0 3px;
+}
+.list_num li a{
+	padding: 0 15px;
+	display: block;
+
+	border: 1px solid;
+}
+
+.list_num li:hover, .list_num li:hover a{
+	color: #c39a4c;
+}
+.list_num li:hover{
+	box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.list_num .l_prev{color: #c39a4c;}
+.list_num .l_next{color: #c39a4c;}
+
+
 
 /*두번째 버튼 테마*/
 .btn_2{
-    width: 100%; 
+    width: 100%;
+	display: inline-block;
     padding: 15px 0;
     background-color: #c9ab81;
     border: 1px solid #c9ab81;
@@ -137,6 +204,7 @@ section{
 
 .btn_3{
     width: 100%;
+	display: inline-block;
     padding: 15px 0;
     border: 1px solid #c9ab81;
     color: #c9ab81;
@@ -162,6 +230,7 @@ section{
     top:0;
     z-index:9000;
     width:100%;
+    min-width: 1200px;
     height:100px;
     background-color:#fff;
     -webkit-transition: top 0.4s cubic-bezier(.64,0,.36,1);
@@ -529,7 +598,7 @@ section{
 #header .sch-word-box {
 	position:relative;
 	margin-bottom:80px;
-	max-width:1160px;
+	min-width:1160px;
 	width:calc(100% - 100px);
 }
 
@@ -568,7 +637,7 @@ section{
 #header .sch-word-wrap {
 	display:flex;
 	justify-content:space-between;
-	max-width:1160px;
+	min-width:1160px;
 	width:calc(100% - 100px);
 }
 #header .sch-word-wrap h2 {
@@ -693,6 +762,7 @@ section{
 /* ===== FOOTER ===== */
 #footer{
     width: 100%;
+    min-width: 1200px;
     background-color: #333;
     color: #fff;
     margin: 0 auto;
@@ -701,7 +771,7 @@ section{
 
 }
 .footer_wrap{
-    width: 100%; max-width: 1200px; height: 100%;
+    width: 100%; min-width: 1200px; height: 100%;
     margin: 0 auto;
 }
 

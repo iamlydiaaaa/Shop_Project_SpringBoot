@@ -2,8 +2,7 @@
 main{
 
 }
-section{
-}
+
 /* ===================== BoardList 시작 ===================== */
 #board_list{
     max-width: 1400px;
@@ -37,15 +36,27 @@ section{
 }
 #tbBox tr{
     border-bottom: 1px solid #eaeaea;
-    cursor: pointer;
+}
+#tbBox td, #tbBox th{
+    height: 90px;
+    vertical-align: middle;
 }
 
 #tbBox tr:hover{
     background-color: rgba(227, 219, 202, 0.2);
 }
-#tbBox td{
-    height: 90px;
-    vertical-align: middle;
+#tbBox tr:nth-child(1):hover{
+    background-color: #fff
+}
+
+
+#tbBox .board_none{
+    background-color: #eaeaea;
+    color: #555;
+    cursor: default;
+}
+#tbBox .board_none:hover{
+    background-color: #eaeaea;
 }
 
 /*---*/
@@ -55,6 +66,9 @@ section{
     white-space:nowrap;
     text-overflow: ellipsis;
     text-align: left; color: #333;
+}
+#tbTit a{
+    width: 100%; display: block;
 }
 #tbName{
 }
@@ -74,33 +88,6 @@ section{
     color: #fff;
 }
 
-
-/*======게시판 번호 넘김 부분======*/
-.list_num{
-    height: 30px;
-    line-height: 30px;
-    margin: 50px 0;
-}
-.list_num ul{
-    text-align: center;
-}
-.list_num li{
-    display: inline-block;
-    height: 30px;
-    color: #777;
-}
-.list_num li a{
-    padding: 0 15px;
-    display: block;
-    
-    border: 1px solid;
-}
-
-.list_num li:hover{
-    color: #c39a4c;
-}
-.list_num .l_prev{color: #c39a4c;}
-.list_num .l_next{color: #c39a4c;}
 
 
 /* ==== 테이블부분 끝 ==== */

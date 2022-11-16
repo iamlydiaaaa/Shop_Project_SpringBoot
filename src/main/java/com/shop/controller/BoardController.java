@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BoardController {
 
 	private final BoardService boardService;
-	
+
 	@GetMapping(value = "/getBoardList")
 	public String getBoardList(Model model, Board board) {
 		List<Board> boardList = boardService.getBoardList(board);
@@ -25,30 +25,30 @@ public class BoardController {
 		model.addAttribute("boardList", boardList);
 		return "board/getBoardList";
 	}
-	
+
 	@PostMapping("/insertBoard")
 	public String insertBoard(Board board) {
 		boardService.insertBoard(board);
 		return "redirect:getBoardList";
 	}
-	
+
 	@GetMapping("/insertBoard")
 	public String insertBoardView() {
 		return "board/insertBoard";
 	}
-	
+
 	@GetMapping("/getBoard")
 	public String geBoard(Board board, Model model) {
 		model.addAttribute("board", boardService.getBoard(board));
 		return "board/getBoard";
 	}
-	
+
 	@PostMapping("/updateBoard")
 	public String updateBoard(Board board) {
 		boardService.updateBoard(board);
 		return "forward:getBoardList";
 	}
-	
+
 	@GetMapping("/deleteBoard")
 	public String deleteBoard(Board board) {
 		boardService.deleteBoard(board);

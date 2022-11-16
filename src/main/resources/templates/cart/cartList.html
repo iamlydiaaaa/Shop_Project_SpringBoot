@@ -9,6 +9,7 @@
 </head>
 
 <!-- 사용자 스크립트 추가 -->
+<!-- 사용자 스크립트 추가 -->
 <th:block layout:fragment="script">
 
     <script th:inline="javascript">
@@ -28,7 +29,7 @@
                 orderTotalPrice += price*count;
             });
 
-            $("#orderTotalPrice").html(orderTotalPrice+'원');
+            $("#orderTotalPrice").html(orderTotalPrice);
         }
 
         function changeCount(obj){
@@ -168,98 +169,139 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
     <style>
-        .content-mg{
-            margin-left:25%;
-            margin-right:25%;
-            margin-top:2%;
-            margin-bottom:100px;
+        .table_default{
+            border-top: 2px solid #333;
+            font-size: 16px;
+            text-align: center;
+            color: #555;
+            width: 100%;
+            max-width: 1400px;
         }
-        .repImgDiv{
-            margin-right:15px;
-            margin-left:15px;
-            height:auto;
+        .table_default tr{
+            border-bottom: 1px solid #eaeaea;
         }
-        .repImg{
-            height:100px;
-            width:100px;
+
+        .table_default tr:hover{
+
         }
-        .fs18{
-            font-size:18px
+        .table_default .table_head{cursor: unset;}
+        .table_default .table_head:hover{background-color: #fff;}
+        .table_default td{
+            height: 60px;
+            vertical-align: middle;
+            padding: 20px;
         }
-        .fs24{
-            font-size:24px
+
+        .cart_img{
+            width: 100px;
         }
+
+        .btn_cancel{
+            background-color: transparent;
+            border: none;
+            width: 30px;
+            height: 50px;
+            font-size: 36px;
+            color: #aaa;
+        }
+        .btn_cancel:hover{
+            color: #b02a2a;
+        }
+        .btn_cancel>span{
+            width: 100%; display: block;
+        }
+        .total_wrap{
+            height: 90px;
+            line-height: 30px;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 50px auto;
+            border-top: 3px solid #555;
+        }
+        .total_wrap span{
+            color: #c9ab81;
+        }
+
+
     </style>
 </th:block>
 
-<div layout:fragment="content" class="content-mg">
+<div layout:fragment="content">
     <main class="sub_section">
-    <h2 class="mb-4">
-        장바구니 목록
-    </h2>
+        <div class="sec_tit">
+            <h2>장바구니</h2>
+        </div>
+        <section id="board_list">
 
-    <div>
-
-        <table class="table">
+        <table class="table_default">
             <colgroup>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="30%"/>
+                <col width="25%"/>
                 <col width="15%"/>
-                <col width="70%"/>
-                <col width="15%"/>
+                <col width="10%"/>
             </colgroup>
             <thead>
-            <tr class="text-center">
+            <tr class="table_head">
                 <td>
-                    <input type="checkbox" id="checkall" onclick="checkAll()"> 전체선택
+                    <input type="checkbox" id="checkall" onclick="checkAll()"> 선택
                 </td>
-                <td>상품정보</td>
+                <td colspan="2">상품정보</td>
+                <td>수량</td>
                 <td>상품금액</td>
+                <td>삭제</td>
             </tr>
             </thead>
             <tbody>
             <tr th:each="cartItem : ${cartItems}">
-                <td class="text-center align-middle">
+                <td>
                     <input type="checkbox" name="cartChkBox" th:value="${cartItem.cartItemId}">
                 </td>
-                <td class="d-flex">
-                    <div class="repImgDiv align-self-center">
-                        <img th:src="${cartItem.imgUrl}" class = "rounded repImg" th:alt="${cartItem.itemNm}">
-                    </div>
-                    <div class="align-self-center">
-                        <span th:text="${cartItem.itemNm}" class="fs24 font-weight-bold"></span>
-                        <div class="fs18 font-weight-light">
-                            <span class="input-group mt-2">
-                                <span th:id="'price_' + ${cartItem.cartItemId}"
-                                      th:data-price="${cartItem.price}"
-                                      th:text="${cartItem.price} + '원'" class="align-self-center mr-2">
-                                </span>
-                                <input type="number" name="count" th:id="'count_' + ${cartItem.cartItemId}"
-                                       th:value="${cartItem.count}" min="1"
-                                       onchange="changeCount(this)" class="form-control mr-2" >
-                                <button type="button" class="close" aria-label="Close">
-                                    <span aria-hidden="true" th:data-id="${cartItem.cartItemId}" onclick="deleteCartItem(this)">&times;</span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
+                <td>
+                    <img th:src="${cartItem.imgUrl}" th:alt="${cartItem.itemNm}" class="cart_img">
                 </td>
-                <td class="text-center align-middle">
+                <td align="left">
+                    <a th:text="${cartItem.itemNm}" ></a>
+                </td>
+                <td>
+                    <p class="select_number_val">
+                        <span th:id="'price_' + ${cartItem.cartItemId}"
+                               th:data-price="${cartItem.price}"
+                               th:text="${cartItem.price} + '원'" style="opacity: 0;">
+                        </span>
+                        <input type='button' onclick='countNum("minus")' value='-' />
+                        <input type="number" name="count" th:id="'count_' + ${cartItem.cartItemId}"
+                               th:value="${cartItem.count}" min="1"
+                               onchange="changeCount(this)" class="count_value" >
+                        <input type='button' onclick='countNum("plus")' value='+' />
+                    </p>
+                </td>
+                <td>
                     <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
                           name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
                     </span>
+                </td>
+                <td>
+                    <button type="button" aria-label="Close" class="btn_cancel">
+                        <span aria-hidden="true" th:data-id="${cartItem.cartItemId}" onclick="deleteCartItem(this)">&times;</span>
+                    </button>
                 </td>
             </tr>
             </tbody>
         </table>
 
-        <h2 class="text-center">
-            총 주문 금액 : <span id="orderTotalPrice" class="text-danger">0원</span>
-        </h2>
-
-        <div class="text-center mt-3">
-            <button type="button" class="btn btn-primary btn-lg" onclick="orders()">주문하기</button>
+        <div class="total_wrap">
+                총 주문 금액 : <span id="orderTotalPrice">0</span> 원
         </div>
 
-    </div>
+        <div>
+            <button type="button" class="btn_2" onclick="orders()">주문하기</button>
+        </div>
+
+    </section>
     </main>
 </div>
 
