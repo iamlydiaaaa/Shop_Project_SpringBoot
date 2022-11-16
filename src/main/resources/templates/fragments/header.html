@@ -18,7 +18,7 @@
                             <li>
                                 <a href="#">Product</a>
                                 <ul class="depth">
-                                    <li><a href="#" style="color: #f79744">BEST</a></li>
+                                    <li><a th:href="@{/items}" style="color: #f79744">BEST</a></li>
                                     <li><a href="#">NEW</a></li>
                                     <li><a href="#">TAPE</a></li>
                                     <li><a href="#">STICKER</a></li>
@@ -40,23 +40,24 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Service</a>
+                                <a th:href="@{/board/getBoardList}">Service</a>
                                 <ul class="depth">
                                     <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Q&amp;A</a></li>
+                                    <li><a th:href="@{/board/getBoardList}">Q&amp;A</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </nav>
                     <nav class="info-menu-wrap">
                         <h2 class="hide">로그인 관련 메뉴</h2>
-                        <ul class="info-menu">
+                        <ul class="gnb-info">
                             <li sec:authorize="isAnonymous()"><a th:href="@{/members/login}">LOGIN</a></li>
                             <li sec:authorize="isAuthenticated()"><a th:href="@{/members/logout}">LOGOUT</a></li>
                             <li sec:authorize="isAnonymous()"><a th:href="@{/members/new}">JOIN</a></li>
-                            <li sec:authorize="isAuthenticated()"><a href="#">MY_ORDER</a></li>
-                            <li sec:authorize="isAuthenticated()"><a href="#">CART</a></li>
-                            <li sec:authorize="isAnonymous()"><a th:href="@{/boardList}">CS_CENTER</a></li>
+                            <li sec:authorize="isAuthenticated()"><a th:href="@{/orders}">MY_ORDER</a></li>
+                            <li sec:authorize="isAuthenticated()"><a th:href="@{/cart}">CART</a></li>
+                            <li sec:authorize="isAuthenticated()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
+                            <li sec:authorize="isAnonymous()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
                         </ul>
                     </nav>
                     <a href="javascript:;" class="btn-sitemap-close closeBtn"><span class="hide">Close</span></a>
@@ -67,11 +68,10 @@
         <!--   ====== 상단 GNB 시작 (왼쪽,오른쪽) ======   -->
         <nav class="gnb-wrap">
             <ul class="gnb">
-                <li><a href="#" style="color: #f79744">BEST</a></li>
+                <li><a th:href="@{/items}" style="color: #f79744">BEST</a></li>
                 <li><a href="#">NEW</a></li>
                 <li><a href="#">TAPE</a></li>
                 <li><a href="#">STICKER</a></li>
-                <li><a href="#">LIVING</a></li>
             </ul>
         </nav>
 
@@ -82,6 +82,7 @@
                 <li sec:authorize="isAnonymous()"><a th:href="@{/members/new}">JOIN</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/orders}">MY_ORDER</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/cart}">CART</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
                 <li sec:authorize="isAnonymous()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
             </ul>
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}" lang="ko">
+
+<th:block layout:fragment="css">
+  <style>
+    .items_list{
+      display: block;
+
+    }
+
+    .items_list>li {
+      float: left;
+      width: calc(100% / 3 - 20px);
+      margin-left: 30px;
+      margin-bottom: 30px;
+      min-width: 250px;
+      border: 1px solid #fafafa;
+      box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    }
+    .items_list>li:nth-child(3n+1) {
+      margin-left: 0;
+    }
+    .items_list .btn_default{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 45px;
+    }
+  </style>
+</th:block>
+
+<div layout:fragment="content">
+  <main class="sub_section">
+    <div class="sec_tit">
+      <h2>BEST ITEMS</h2>
+    </div>
+    <section id="item_list">
+      <div class="sec_wrap">
+        <ul class="sec1_items_list items_list">
+          <li th:each="item, status: ${items.getContent()}">
+            <ul>
+              <li class="list_img_wrap">
+                <div class="list_img">
+                  <img th:src="@{/img/list1.jpg}" alt="" />
+                </div>
+                <div class="btn_wrap"><a th:href="'/item/'+${item.id}" class="btn_default">VIEW MORE</a></div>
+              </li>
+              <li class="list_tit"><a th:href="'/item/'+${item.id}" th:text="${item.itemNm}">제목</a></li>
+              <li class="list_desc" th:text="${item.itemDetail}">상세설명</li>
+              <li class="list_desc_small">Color: </li>
+              <li class="list_price"><strong th:text="${item.price}"></strong>원</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+</html>

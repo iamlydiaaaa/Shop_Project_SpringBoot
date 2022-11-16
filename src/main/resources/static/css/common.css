@@ -768,7 +768,7 @@ section{
     margin: 0 auto;
     padding: 50px 20px;
     text-align: center; font-size: 13px; color: #767676;
-
+    clear: both;
 }
 .footer_wrap{
     width: 100%; min-width: 1200px; height: 100%;

@@ -49,6 +49,20 @@
             </div>
             <div class="sec_wrap">
                 <ul class="sec1_items_list">
+                    <li th:each="item, status: ${items.getContent()}">
+                        <ul>
+                            <li class="list_img_wrap">
+                                <div class="list_img">
+                                    <img th:src="@{/img/list1.jpg}" alt="" />
+                                </div>
+                                <div class="btn_wrap"><a th:href="'/item/'+${item.id}" class="btn_default">VIEW MORE</a></div>
+                            </li>
+                            <li class="list_tit"><a th:href="'/item/'+${item.id}" th:text="${item.itemNm}">제목</a></li>
+                            <li class="list_desc" th:text="${item.itemDetail}">상세설명</li>
+                            <li class="list_desc_small">Color: </li>
+                            <li class="list_price"><strong th:text="${item.price}"></strong>원</li>
+                        </ul>
+                    </li>
                     <li>
                         <ul>
                             <li class="list_img_wrap">
@@ -63,18 +77,7 @@
                             <li class="list_price"><strong>1000</strong>원</li>
                         </ul>
                     </li>
-                    <li>
-                        <ul>
-                            <li class="list_img_wrap">
-                                <div class="list_img"></div>
-                                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
-                            </li>
-                            <li class="list_tit"><a href="#">제목</a></li>
-                            <li class="list_desc">상세설명</li>
-                            <li class="list_desc_small">색상</li>
-                            <li class="list_price"><strong>1000</strong>원</li>
-                        </ul>
-                    </li>
+
                     <li>
                         <ul>
                             <li class="list_img_wrap">
