@@ -18,11 +18,9 @@
                             <li>
                                 <a href="#">Product</a>
                                 <ul class="depth">
-                                    <li><a th:href="@{/items}" style="color: #f79744">BEST</a></li>
-                                    <li><a href="#">NEW</a></li>
-                                    <li><a href="#">TAPE</a></li>
-                                    <li><a href="#">STICKER</a></li>
-                                    <li><a href="#">LIVING</a></li>
+                                    <li><a th:href="@{/item/itemslist}" style="color: #f79744">BEST</a></li>
+                                    <li><a th:href="@{/item/itemslist}">NEW</a></li>
+                                    <li><a th:href="@{/item/itemslist}">STORY</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -40,10 +38,10 @@
                                 </ul>
                             </li>
                             <li>
-                                <a th:href="@{/board/getBoardList}">Service</a>
+                                <a th:href="@{/board/BoardList}">Service</a>
                                 <ul class="depth">
                                     <li><a href="#">FAQ</a></li>
-                                    <li><a th:href="@{/board/getBoardList}">Q&amp;A</a></li>
+                                    <li><a th:href="@{/board/BoardList}">Q&amp;A</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -56,8 +54,8 @@
                             <li sec:authorize="isAnonymous()"><a th:href="@{/members/new}">JOIN</a></li>
                             <li sec:authorize="isAuthenticated()"><a th:href="@{/orders}">MY_ORDER</a></li>
                             <li sec:authorize="isAuthenticated()"><a th:href="@{/cart}">CART</a></li>
-                            <li sec:authorize="isAuthenticated()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
-                            <li sec:authorize="isAnonymous()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
+                            <li sec:authorize="isAuthenticated()"><a th:href="@{/board/BoardList}">CS_CENTER</a></li>
+                            <li sec:authorize="isAnonymous()"><a th:href="@{/board/BoardList}">CS_CENTER</a></li>
                         </ul>
                     </nav>
                     <a href="javascript:;" class="btn-sitemap-close closeBtn"><span class="hide">Close</span></a>
@@ -68,22 +66,22 @@
         <!--   ====== 상단 GNB 시작 (왼쪽,오른쪽) ======   -->
         <nav class="gnb-wrap">
             <ul class="gnb">
-                <li><a th:href="@{/items}" style="color: #f79744">BEST</a></li>
-                <li><a href="#">NEW</a></li>
-                <li><a href="#">TAPE</a></li>
-                <li><a href="#">STICKER</a></li>
+                <li><a th:href="@{/item/itemslist}" style="color: #f79744">BEST</a></li>
+                <li><a th:href="@{/item/itemslist}">NEW</a></li>
+                <li><a th:href="@{/item/itemslist}">STORY</a></li>
             </ul>
         </nav>
 
         <nav class="gnb-info-wrap">
             <ul class="gnb-info">
+<!--                <li sec:authorize="isAuthenticated()"><span th:text="${}"></span> 님</li>-->
                 <li sec:authorize="isAnonymous()"><a th:href="@{/members/login}">LOGIN</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/members/logout}">LOGOUT</a></li>
                 <li sec:authorize="isAnonymous()"><a th:href="@{/members/new}">JOIN</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/orders}">MY_ORDER</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/cart}">CART</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
-                <li sec:authorize="isAnonymous()"><a th:href="@{/board/getBoardList}">CS_CENTER</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/board/BoardList}">CS_CENTER</a></li>
+                <li sec:authorize="isAnonymous()"><a th:href="@{/board/BoardList}">CS_CENTER</a></li>
             </ul>
 
         </nav>

@@ -1,5 +1,6 @@
 package com.shop.controller;
 
+import com.shop.dto.ItemFormDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -26,7 +27,7 @@ public class MainController {
     @GetMapping(value = "/")
     public String main(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 4);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);

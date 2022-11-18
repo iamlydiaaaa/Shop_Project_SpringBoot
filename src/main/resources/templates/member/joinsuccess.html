@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+  <style>
+    .join_success{text-align: center;}
+    .join_success>p{
+      font-size: 52px;
+      font-weight: 900;
+      margin: 100px 0 50px;
+      color: #ecb019;
+    }
+    .join_success>span{display: block;
+      font-size: 20px;
+    }
+    .join_success>div{
+      margin-top: 50px;
+    }
+    .join_success .btn_default a{line-height: 45px;}
+    .join_success .btn_default a:hover{color: #88704f;}
+  </style>
+</th:block>
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+  <script th:inline="javascript">
+  </script>
+
+</th:block>
+
+<div layout:fragment="content">
+  <main>
+    <div class="sec_tit">
+      <h2>가입 성공</h2>
+    </div>
+    <section id="join">
+    <div class="join_success">
+      <p>회원 가입을 환영합니다!</p>
+      <span>이제 로그인하여 다양한 혜택을 즐겨 보세요.</span>
+      <div>
+        <p class="btn_default"><a th:href="@{/members/login}">로그인하기</a></p>
+        <p class="btn_default"><a href="/">메인으로 가기</a></p>
+      </div>
+    </div>
+    </section>
+  </main>
+
+</div>
+
+</html>

@@ -69,6 +69,13 @@ main{
 }
 #tbTit a{
     width: 100%; display: block;
+    height: 90px;
+    line-height: 90px;
+    transition: all 0.2s;
+}
+#tbTit a:hover{
+    color: #000;
+    text-decoration: underline;
 }
 #tbName{
 }
@@ -137,5 +144,13 @@ main{
     margin: 0 auto;
     display: inline-block;
 }
+
+.btn_list{
+    border-top: 1px dashed #ccc;
+    height: 50px;
+    margin: 20px 0;
+    padding-top: 20px;
+}
+
 
 /* ===================== BoardRegister 끝 ===================== */

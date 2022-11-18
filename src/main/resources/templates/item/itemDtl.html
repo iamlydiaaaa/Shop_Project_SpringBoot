@@ -52,7 +52,7 @@
                 cache   : false,
                 success  : function(result, status){
                     alert("주문이 완료 되었습니다.");
-                    location.href='/';
+                    location.href='/orders';
                 },
                 error : function(jqXHR, status, error){
 
@@ -65,6 +65,20 @@
 
                 }
             });
+        }
+        function popup(wrap){
+            //모달 팝업 나타내기, 없애기 메소드
+            const close = () => {
+                document.querySelector(wrap).style.opacity = "0";
+                document.querySelector(wrap).style.display = "none";
+            }
+            document.querySelector(wrap).style.opacity = "1";
+            document.querySelector(wrap).style.display = "block";
+
+            //버튼 클릭시 메소드 실행
+            document.querySelector(".close_btn").addEventListener("click", close);
+            document.querySelector(".popup_x").addEventListener("click", close);
+            document.querySelector(".popup_bg").addEventListener("click", close);
         }
 
         function addCart(){
@@ -91,8 +105,8 @@
                 dataType : "json",
                 cache   : false,
                 success  : function(result, status){
-                    alert("상품을 장바구니에 담았습니다.");
-                    location.href='/';
+                    // alert("상품을 장바구니에 담았습니다.");
+                    popup('#jin_popup');
                 },
                 error : function(jqXHR, status, error){
 
@@ -137,7 +151,9 @@
             width: 40%; min-width: 500px;  margin: 0 5%;text-align: center;
         }
         .detail_left_wrap img{
-            height: 440px;}
+            height: 440px;
+            box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+        }
 
         /*  오른쪽 텍스트부분  */
         .detail_right_wrap{
@@ -146,6 +162,7 @@
             background-color: #fff;
             position: relative;
             margin: 0 5%;
+            box-shadow: 0 0 10px rgb(0 0 0 / 20%);
         }
         .item_dt_tit{font-size: 26px; font-weight: bold; padding-bottom: 20px;
         }
@@ -214,11 +231,15 @@
             padding: 50px 0;
             text-align: center;
             line-height: 1.5em;
+            font-size: 1.5em;
         }
-
+        .detail_imgs{
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
         .detail_imgs img{
-            width: 80%;
-            margin: 30px auto;
+            margin: 50px auto;
         }
 
     </style>
@@ -229,9 +250,9 @@
         <input type="hidden" id="itemId" th:value="${item.id}">
         <div class="detail_wrap">
             <!--     상단 상품 요약 정보      -->
-            <div class="detail_top" th:style="'background-image:url(' + @{/img/img04.jpg} + ');'">
+            <div class="detail_top" th:style="'background-image:url(' + @{/img/img05.jpg} + ');'">
                 <div class="detail_left_wrap">
-<!--                    <img th:src="${item.itemImgDtoList[0].imgUrl}" th:alt="${item.itemNm}">-->
+                    <img th:src="${item.itemImgDtoList[0].imgUrl}" th:alt="${item.itemNm}">
                 </div>
                 <div class="detail_right_wrap">
                     <div class="item_dt_tit" th:text="${item.itemNm}"></div>
@@ -278,6 +299,23 @@
             </div>
         </div>
     </main>
+    <!--   모달 팝업 시작   -->
+    <div id="jin_popup">
+        <div class="popup">
+            <p class="popup_x_wrap"><a href="#" class="popup_x"></a></p>
+            <h4 class="popup_tit">담기 성공</h4>
+            <p class="popup_txt">
+                장바구니에 상품을 담았습니다. <br>
+                장바구니로 이동하시겠습니까?
+            </p>
+            <ul class="popup_btns">
+                <li><button type="button" class="confirmBtn" onClick="location.href='/cart'">장바구니 이동</button></li>
+                <li><a href="#" class="close_btn">닫기</a></li>
+            </ul>
+        </div>
+        <p class="popup_bg"></p>
+    </div>
+    <!--   모달 팝업 끝   -->
 </div>
 
 </html>

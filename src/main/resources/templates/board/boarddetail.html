@@ -12,6 +12,35 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
     <style>
+        .board_contents_wrap{
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .board_contents_wrap>div{
+
+            margin-bottom: 30px;
+        }
+        .board_contents_wrap>div:nth-child(1){height: 90px; font-size: 40px; font-weight: bold;}
+        .board_contents_wrap>div:nth-child(1) p{line-height: 90px;}
+        .board_contents_wrap>div:nth-child(2){height: 60px;}
+        .board_contents_wrap>div:nth-child(3){height: 250px;}
+        .board_contents_wrap p{border-bottom: 1px solid #eaeaea;}
+        .board_contents_wrap p input{width: 100%;
+            background-color: #fff;
+            padding: 15px;
+        }
+        .board_contents_wrap p span{display: inline-block; padding: 15px 20px;}
+        .board_contents_wrap p span+span{border-left: 1px solid #eaeaea;}
+        .board_contents_wrap .writer_info{height: 60px; background-color: #f9f9f9}
+        .board_contents_wrap p textarea{width: 100%;
+            background-color: #fff;
+            padding: 15px;
+            height: 250px;
+            line-height: 1.8em;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
     </style>
 </th:block>
 
@@ -21,39 +50,36 @@
             <span>궁금한 내용을 남겨주세요.</span>
             <h2>Q&amp;A</h2>
         </div>
-        <section id="board_regist">
+        <section id="board_detail">
             <form th:action="@{/board/updateBoard}" method="post">
             <input name="seq" type="hidden" th:vale="${board.seq}">
-                <div class="board_write">
-                    <div class="row">
-                        <p class="board_tit"><label for="title">제목</label></p>
+                <div class="board_contents_wrap">
+                    <div>
                         <p>
                             <input type="text" name="title" id="title" th:value="${board.title }">
                         </p>
                     </div>
-                    <div class="row_user_con">
-                        <div class="board_writer">작성자: <span th:text="${board.writer }"></span></div>
-                        <div>
+                    <div>
+                        <p class="writer_info">
+                            <span>작성자: <strong th:text="${board.writer }"></strong></span>
                         	<span th:text="${board.createDate}"></span>
                         	<span class="board_date">조회 <strong th:text="${board.cnt}"></strong></span>
-                        </div>
+                        </p>
                     </div>
-                    
-                    <div class="row board_txt">
-                        <p class="board_tit"><label for="content">내용</label></p>
+
+                    <div>
                         <p>
                             <textarea name="content" id="content" class="txt_area" th:text="${board.content }"></textarea>
                         </p>
                     </div>
                 </div>
                 <div class="submit_wrap">
-                    <!--                        <input type="hidden" name="page" value="${page}">-->
+                    <input type="hidden" name="page" value="${page}">
                     <button type="submit" class="btn_default">게시글 수정</button>
                 </div>
                 <ul class="btn_list">
-                	<li class="btn_2"><a th:href="@{/board/insertBoard}">새 글 등록</a></li>
-                	<li class="btn_3"><a th:href="@{/board/deleteBoard?(seq=${board.seq})}">글 삭제</a></li>
-                	<li class="btn_3"><a th:href="@{/board/getBoardList}">글 목록</a></li>
+                	<li class="btn_4"><a th:href="@{/board/deleteBoard?(seq=${board.seq})}">글 삭제</a></li>
+                	<li class="btn_4"><a th:href="@{/board/BoardList}">글 목록</a></li>
                 </ul>
             </form>
         </section>

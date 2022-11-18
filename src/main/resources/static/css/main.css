@@ -28,7 +28,7 @@
 
 }
 .sec1_items_list>li+li{margin-left: 30px;}
-.sec1_items_list>ul{}
+.sec1_items_list>li>ul>li+li{padding-left: 30px;}
 
 /* 이미지부분 */
 .list_img_wrap{
@@ -126,7 +126,8 @@
 }
 /* 가격 */
 .list_price{
-    
+    margin: 20px 0;
+
 }
 .list_price strong{
     padding-right: 5px;

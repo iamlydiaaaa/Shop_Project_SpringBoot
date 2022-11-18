@@ -6,7 +6,9 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
     <style>
-
+        .visual .visual_wrap{
+            height: 700px;
+        }
     </style>
 </th:block>
 
@@ -14,7 +16,7 @@
     <main id="main">
         <!--   빅비주얼 시작   -->
         <section class="visual">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide visual_wrap" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -49,57 +51,55 @@
             </div>
             <div class="sec_wrap">
                 <ul class="sec1_items_list">
-                    <li th:each="item, status: ${items.getContent()}">
-                        <ul>
-                            <li class="list_img_wrap">
-                                <div class="list_img">
-                                    <img th:src="@{/img/list1.jpg}" alt="" />
-                                </div>
-                                <div class="btn_wrap"><a th:href="'/item/'+${item.id}" class="btn_default">VIEW MORE</a></div>
-                            </li>
-                            <li class="list_tit"><a th:href="'/item/'+${item.id}" th:text="${item.itemNm}">제목</a></li>
-                            <li class="list_desc" th:text="${item.itemDetail}">상세설명</li>
-                            <li class="list_desc_small">Color: </li>
-                            <li class="list_price"><strong th:text="${item.price}"></strong>원</li>
-                        </ul>
-                    </li>
                     <li>
                         <ul>
                             <li class="list_img_wrap">
                                 <div class="list_img">
-                                    <img th:src="@{/img/list1.jpg}" alt="" />
+                                    <img th:src="@{/img/list01.jpg}" alt="" />
                                 </div>
-                                <div class="btn_wrap"><a th:href="@{/item/2}" class="btn_default">VIEW MORE</a></div>
+                                <div class="btn_wrap"><a th:href="@{/item/17}" class="btn_default">VIEW MORE</a></div>
                             </li>
-                            <li class="list_tit"><a th:href="@{/item/2}">제목</a></li>
-                            <li class="list_desc">상세설명</li>
-                            <li class="list_desc_small">색상</li>
-                            <li class="list_price"><strong>1000</strong>원</li>
+                            <li class="list_tit"><a th:href="@{/item/17}">Earlgrey Pound Cake</a></li>
+                            <li class="list_desc">얼그레이 파운드 케이크</li>
+                            <li class="list_desc_small">LEMON</li>
+                            <li class="list_price"><strong>6,900</strong>원</li>
                         </ul>
                     </li>
 
                     <li>
                         <ul>
                             <li class="list_img_wrap">
-                                <div class="list_img"></div>
-                                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
+                                <div class="list_img"><img th:src="@{/img/list02.jpg}" alt="" /></div>
+                                <div class="btn_wrap"><a th:href="@{/item/11}" class="btn_default">VIEW MORE</a></div>
                             </li>
-                            <li class="list_tit"><a href="#">제목</a></li>
-                            <li class="list_desc">상세설명</li>
-                            <li class="list_desc_small">색상</li>
-                            <li class="list_price"><strong>1000</strong>원</li>
+                            <li class="list_tit"><a th:href="@{/item/11}">Redbean Cake</a></li>
+                            <li class="list_desc">단팥 생크림케이크</li>
+                            <li class="list_desc_small">YELLOW</li>
+                            <li class="list_price"><strong>5,900</strong>원</li>
                         </ul>
                     </li>
                     <li>
                         <ul>
                             <li class="list_img_wrap">
-                                <div class="list_img"></div>
-                                <div class="btn_wrap"><button class="btn_default">VIEW MORE</button></div>
+                                <div class="list_img"><img th:src="@{/img/list03.jpg}" alt="" /></div>
+                                <div class="btn_wrap"><a th:href="@{/item/65}" class="btn_default">VIEW MORE</a></div>
                             </li>
-                            <li class="list_tit"><a href="#">제목</a></li>
-                            <li class="list_desc">상세설명</li>
-                            <li class="list_desc_small">색상</li>
-                            <li class="list_price"><strong>1000</strong>원</li>
+                            <li class="list_tit"><a th:href="@{/item/65}">청귤무스케이크</a></li>
+                            <li class="list_desc">귤양갱과 청귤무스케이크</li>
+                            <li class="list_desc_small">ORANGE</li>
+                            <li class="list_price"><strong>8,900</strong>원</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li class="list_img_wrap">
+                                <div class="list_img"><img th:src="@{/img/list04.jpg}" alt="" /></div>
+                                <div class="btn_wrap"><a th:href="@{/item/23}" class="btn_default">VIEW MORE</a></div>
+                            </li>
+                            <li class="list_tit"><a th:href="@{/item/23}">Cheese Scone</a></li>
+                            <li class="list_desc">뽀또 황치즈스콘(추천)</li>
+                            <li class="list_desc_small">BEIGE</li>
+                            <li class="list_price"><strong>3,900</strong>원</li>
                         </ul>
                     </li>
                 </ul>
@@ -116,8 +116,8 @@
                     <p class="sec4_img" th:style="'background-image:url(' + @{/img/img02.jpg} + ');'"></p>
                     <div class="sec4_txt_wrap1">
                         <ul class="sec4_txt_wrap2">
-                            <li class="list_desc">부제목</li>
-                            <li class="list_tit"><a href="#">제목제목제목</a></li>
+                            <li class="list_desc">필라델피아 크림치즈로 만든</li>
+                            <li class="list_tit"><a href="#">Basque Cheese Cake</a></li>
                             <li class="list_desc_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
                             <li class="list_btn"><button class="btn_default">VIEW MORE</button></li>
                         </ul>
@@ -139,13 +139,13 @@
                         <div class="list_img_wrap">
 
                             <p class="list_img">
-                                <img th:src="@{/img/list1.jpg}" alt="" width="100%" />
+                                <img th:src="@{/img/list15.jpg}" alt="" width="100%" />
                             </p>
                         </div>
                         <ul>
-                            <li class="list_desc">상세설명</li>
-                            <li class="list_tit"><a href="#">신제품제목</a></li>
-                            <li class="list_desc_small">색상</li>
+                            <li class="list_desc">New Arrival</li>
+                            <li class="list_tit"><a href="#">Coffee</a></li>
+                            <li class="list_desc_small">jeju</li>
                             <li class="list_btn"><button class="btn_default2">VIEW MORE</button></li>
                         </ul>
                     </li>
@@ -153,13 +153,13 @@
                         <div class="list_img_wrap">
 
                             <p class="list_img">
-                                <img th:src="@{/img/img02.jpg}" alt="" width="100%" />
+                                <img th:src="@{/img/list06.jpg}" alt="" width="100%" />
                             </p>
                         </div>
                         <ul>
-                            <li class="list_desc">상세설명</li>
-                            <li class="list_tit"><a href="#">신제품제목</a></li>
-                            <li class="list_desc_small">색상</li>
+                            <li class="list_desc">New Arrival</li>
+                            <li class="list_tit"><a href="#">Souffle</a></li>
+                            <li class="list_desc_small">seoul</li>
                             <li class="list_btn"><button class="btn_default2">VIEW MORE</button></li>
                         </ul>
                     </li>
@@ -167,13 +167,13 @@
                         <div class="list_img_wrap">
 
                             <p class="list_img">
-                                <img th:src="@{/img/img03.jpg}" alt="" width="100%" />
+                                <img th:src="@{/img/list07.jpg}" alt="" width="100%" />
                             </p>
                         </div>
                         <ul>
-                            <li class="list_desc">상세설명</li>
-                            <li class="list_tit"><a href="#">신제품제목</a></li>
-                            <li class="list_desc_small">색상</li>
+                            <li class="list_desc">New Arrival</li>
+                            <li class="list_tit"><a href="#">Brunch</a></li>
+                            <li class="list_desc_small">incheon</li>
                             <li class="list_btn"><button class="btn_default2">VIEW MORE</button></li>
                         </ul>
                     </li>
@@ -186,7 +186,7 @@
             <div class="sec_tit">
                 <h2>GALLERY</h2>
                 <span>더욱 다양한 상품을 구경하세요.</span>
-                <div class="list_btn"><button class="btn_default">VIEW MORE</button></div>
+                <div class="list_btn"><a th:href="@{/item/itemslist}" class="btn_default" style="line-height: 45px">VIEW MORE</a></div>
             </div>
         </section>
 

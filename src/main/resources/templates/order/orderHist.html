@@ -48,6 +48,23 @@
                 }
             });
         }
+
+        function popup(wrap){
+            //모달 팝업 나타내기, 없애기 메소드
+                document.querySelector(wrap).style.opacity = "1";
+                document.querySelector(wrap).style.display = "block";
+            const close = () => {
+                document.querySelector(wrap).style.opacity = "0";
+                document.querySelector(wrap).style.display = "none";
+            }
+
+            //버튼 클릭시 메소드 실행
+            document.querySelector(".popupClick").addEventListener("click", open);
+            document.querySelector(".closeBtn").addEventListener("click", close);
+            document.querySelector(".popup_x").addEventListener("click", close);
+            document.querySelector(".popup_bg").addEventListener("click", close);
+
+        }
     </script>
 
 </th:block>
@@ -119,7 +136,7 @@
             padding: 15px 20px;
         }
 
-        .table_orders_tit button{
+        .table_orders_tit .order_cancel_btn{
             border: 1px solid #f79744;
             background-color: #fff;
             color: #f79744;
@@ -131,7 +148,7 @@
 
 
 
-        .table_orders_tit button:hover{
+        .table_orders_tit .order_cancel_btn:hover{
             border: 1px solid transparent;
             background-color: #f79744;
             color: #fff;
@@ -186,7 +203,24 @@
                     <span th:text="'주문일: ' + ${order.orderDate}"></span>
                     <span>
                         <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                            <button type="button" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
+                            <button type="button" class="order_cancel_btn popupClick" onclick="popup('#jin_popup')">주문취소</button>
+                            <!--   모달 팝업 시작   -->
+                            <div id="jin_popup">
+                                <div class="popup">
+                                    <p class="popup_x_wrap"><a href="#" class="popup_x"></a></p>
+                                    <h4 class="popup_tit">취소 확인</h4>
+                                    <p class="popup_txt">
+                                        주문을 취소하시겠습니까? <br>
+                                        취소 후 철회가 불가능합니다.
+                                    </p>
+                                    <ul class="popup_btns">
+                                        <li><button type="button" th:value="${order.orderId}" onclick="cancelOrder(this.value)" class="confirmBtn">주문취소</button></li>
+                                        <li><a href="#" class="close_btn">닫기</a></li>
+                                    </ul>
+                                </div>
+                                <p class="popup_bg"></p>
+                            </div>
+                            <!--   모달 팝업 끝   -->
                         </th:block>
                         <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
                             <h4>(취소 완료)</h4>

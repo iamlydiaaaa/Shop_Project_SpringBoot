@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+/*   여기서부터 모달창 부분 : 모달 팝업 */
+#jin_popup{width: 100%; height: 100vh;
+    position: fixed; left: 0;top: 0;
+    display: none;
+    transition: all 0.3s;
+}
+
+#jin_popup .popup{width: 300px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 30px 10px;
+    position: fixed; left: 50%;top: 50%; transform: translate(-50%,-50%);
+    z-index: 100;
+}
+
+/*    모달 x 버튼   */
+#jin_popup .popup_x_wrap{position: absolute; right: 10px;top: 10px;}
+#jin_popup .popup_x{
+    width: 20px; height: 20px; display: block;
+}
+#jin_popup .popup_x::before,.popup_x::after{
+    content: ""; display: block; width: 20px; height: 2px;
+    background-color: #ccc;
+    position: absolute; left: 0;top: 10px;
+    transition: ease-out 0.2s;
+    opacity: 0.3;
+}
+#jin_popup .popup_x::before{
+    transform: rotate(45deg);
+}
+#jin_popup .popup_x::after{
+    transform: rotate(-45deg);
+}
+#jin_popup .popup_x:hover::before{transform: rotate(0); opacity: 1;}
+#jin_popup .popup_x:hover::after{transform: rotate(0);opacity: 1;}
+
+
+/*    모달 제목    */
+#jin_popup .popup_tit{font-size: 24px; font-weight: bold; margin-bottom:  30px;
+    color: #f0246b;
+}
+
+/*    모달 내용    */
+#jin_popup .popup_txt{
+    margin-bottom: 30px;
+    padding: 0 20px;
+    line-height: 1.5em;
+    font-size: 14px;
+    color: #333;
+}
+
+/*    모달 버튼    */
+#jin_popup .popup_btns{padding-top: 10px;}
+#jin_popup .popup_btns li{display: inline-block; margin: 0 3px;}
+#jin_popup .popup_btns button, #jin_popup .popup_btns a{
+    outline: none; border: none;
+    padding: 8px 25px;
+    color: #fff; font-size: 12px; line-height: 1em;
+    cursor: pointer;
+    border-radius: 3px;
+    background-size: 200% 200%;
+    transition: all 0.1s;
+
+}
+#jin_popup .popup_btns .confirmBtn{
+    background-color: #f79744;
+    background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+
+}
+#jin_popup .popup_btns .close_btn{
+    background-color: #919191;
+    background-image: linear-gradient(-45deg, #333 0%, #777 100%);
+
+}
+#jin_popup .popup_btns button:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    animation: gradient 2s ease infinite;
+}
+
+/*    뒷부분 까만 배경 설정    */
+#jin_popup .popup_bg{
+    width: 100%; height: 100%;
+    background-color: rgba(255,255,255, 0.8);
+    position: absolute; left: 0;top: 0;
+}
+
+
+/*  모달 나타냈다 없애는 클래스 */
+.show{
+    display: block;
+}
