@@ -1,5 +1,6 @@
 package com.shop.controller;
 
+import com.shop.dto.MainItemDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,6 +10,8 @@ import com.shop.dto.ItemFormDto;
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +26,8 @@ import com.shop.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.Optional;
 
 @Controller
@@ -31,15 +36,17 @@ public class ItemController {
 
     private final ItemService itemService;
 
+    //상품 등록 페이지로 이동
     @GetMapping(value = "/admin/item/new")
     public String itemForm(Model model){
         model.addAttribute("itemFormDto", new ItemFormDto());
         return "item/itemForm";
     }
 
+    //상품 등록 페이지에서 상품 저장 클릭시
     @PostMapping(value = "/admin/item/new")
     public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
-                          Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
+                          Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, RedirectAttributes attr){
 
         if(bindingResult.hasErrors()){
             return "item/itemForm";
@@ -56,8 +63,8 @@ public class ItemController {
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
             return "item/itemForm";
         }
-
-        return "redirect:/";
+        //attr.addFlashAttribute("successMessage", "상품 등록 성공");
+        return "redirect:/admin/items";
     }
 
     @GetMapping(value = "/admin/item/{itemId}")
@@ -98,7 +105,8 @@ public class ItemController {
     }
 
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
-    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
+    public String itemManage(ItemSearchDto itemSearchDto, HttpServletRequest request,
+                             @PathVariable("page") Optional<Integer> page, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
@@ -106,6 +114,8 @@ public class ItemController {
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
+
+        model.addAttribute("result", request.getAttribute("successMessage"));
 
         return "item/itemMng";
     }
@@ -117,16 +127,17 @@ public class ItemController {
         return "item/itemDtl";
     }
 
-    @GetMapping(value = "/items")
+    @GetMapping(value = "/item/itemslist")
     public String itemList(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 12);
-        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
+//        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
+        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
-        return "item/itemList";
+        return "item/itemslist";
     }
 
 }

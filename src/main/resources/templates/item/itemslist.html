@@ -44,7 +44,7 @@
             <ul>
               <li class="list_img_wrap">
                 <div class="list_img">
-<!--                  <img th:src="@{/img/list09.jpg}" alt="" />-->
+                    <img th:src="${item.imgUrl}" th:alt="${item.itemNm}">
                 </div>
                 <div class="btn_wrap"><a th:href="'/item/'+${item.id}" class="btn_default">VIEW MORE</a></div>
               </li>

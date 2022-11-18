@@ -83,4 +83,10 @@ public class OrderController {
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 
+    //주문완료
+    @GetMapping(value ="/orderSuccess")
+    public String orderSuccess(Model model){
+        return "order/ordersuccess";
+    }
+
 }

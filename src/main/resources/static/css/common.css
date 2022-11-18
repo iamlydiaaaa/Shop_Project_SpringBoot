@@ -39,7 +39,7 @@ section{
 .error{
 	color: #fff;
 	font-size: 12px;
-	background-color: #c72828;
+	background-color: #fff;
 	padding: 7px;
 }
 
@@ -219,6 +219,25 @@ section{
     border: 1px solid #666;
 }
 
+.btn_4{
+
+    float: right;
+    margin: 0 5px;
+    height: 30px; width: 60px;
+    text-align: center; font-size: 0.8em;
+    border-bottom: 2px solid #555;
+
+}
+.btn_4 a{
+    width: 100%; display: block;
+    line-height: 30px; color: #999;
+    transition: all 0.3s;
+}
+.btn_4:hover a{
+    color: #333;
+    line-height: 20px;
+}
+
 /* ===== 버튼 공통 끝 ===== */
 
 
@@ -247,16 +266,36 @@ section{
     position:absolute;
     left:50%;
     top:50%;
-    margin-left:-73px;
-    margin-top:-22.5px;
+    transform: translate(-50%, -50%);
 }
 #header .logo a {
     display:block;
-    width:200px;
-    height: 50px;
+    width:165px;
+    height: 60px;
     text-indent: -9999px;
-    background:url(../img/logo.jpg) no-repeat center;
-    background-size: cover;
+    background:url(../img/logo.png) no-repeat center;
+    background-size: contain;
+    position: relative;
+}
+#header .logo a::after{
+    content: "";
+    width: 120px;
+    height: 50px;
+    display: block;
+    background-color: #fff;
+    border: 1px solid #000000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: all 0.5s ease-out;
+    transform-style: preserve-3d;
+}
+
+#header .logo:hover a::after{
+    transform: translate(-50%, -50%) rotateX(180deg);
+    border: 1px solid #f79744;
 }
 
 
@@ -775,12 +814,12 @@ section{
     margin: 0 auto;
 }
 
-#footer h1{width: 200px;margin: 0 auto 20px;
-    background: url(../img/logo.jpg) no-repeat 0 0;
-    background-size: contain
+#footer h1{width: 165px;margin: 0 auto 20px;
+    background: url(../img/logo_dark.png) no-repeat 0 0;
+    background-size: contain;
 }
 #footer h1 a{width: 100%; display: block;
-	height: 50px;
+	height: 60px;
     text-indent: -9999px;
 }
 
