@@ -11,7 +11,7 @@
   (스프링부트 쇼핑몰 프로젝트 with JPA)
 </h2>
 <div>
-  <h3>- PROGRAM -</h3>
+  <h3>- TOOL -</h3>
   <img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=flat&logo=IntelliJ IDEA&logoColor=white"/>
   <br>
   
@@ -28,7 +28,7 @@
   <br>
   <h3>- SERVER -</h3>
   <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat&logo=Amazon AWS&logoColor=white"/>
- 
+  <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=flat&logo=Apache Tomcat&logoColor=white"/>
   <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=Linux&logoColor=white"/>
 <br><br><hr><br>
   
